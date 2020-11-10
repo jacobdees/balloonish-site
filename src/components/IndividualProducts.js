@@ -18,6 +18,7 @@ const IndividualProducts = (props) => {
 					<CardTitle>{props.title}</CardTitle>
 					<CardSubtitle>Price of {props.title}</CardSubtitle>
 					<CardText>Description of {props.title}</CardText>
+					<Button>More Info</Button>
 				</CardBody>
 			</Card>
 		</div>
