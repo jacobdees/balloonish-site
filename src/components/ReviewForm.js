@@ -1,16 +1,16 @@
 import React from 'react';
 
-export default class LeaveAReview extends React.Component {
+export default class ReviewForm extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			error: undefined,
-			fName: '',
-			lName: '',
-			email: '',
-			rating: 5,
-			review: '',
+			fName: props.fName,
+			lName: props.lName,
+			email: props.email,
+			rating: props.rating,
+			review: props.review,
 		};
 	}
 
@@ -41,7 +41,6 @@ export default class LeaveAReview extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-
 		// send submitted info to back-end
 
 		if (!this.state.email || !this.state.rating) {
@@ -50,7 +49,7 @@ export default class LeaveAReview extends React.Component {
 			}));
 		} else {
 			this.setState(() => ({ error: '' }));
-			this.props.onSubmit({
+			this.onSubmit({
 				fName: this.state.fName,
 				lName: this.state.lName,
 				email: this.state.email,
@@ -61,37 +60,54 @@ export default class LeaveAReview extends React.Component {
 	};
 
 	render() {
+		// if (this.state.error === '') {
 		return (
 			<div>
+				{this.state.error && (
+					<h2>
+						Thank you for submitting your review of balloon.ish!
+					</h2>
+				)}
 				<h2>Leave a Review!</h2>
 				<form onSubmit={this.onSubmit}>
 					<input
 						type="text"
 						id="fName"
 						placeholder="First Name"
+						value={this.state.fName}
 						onChange={this.onfNameChange}
 					></input>
 					<input
 						type="text"
 						id="lName"
 						placeholder="Last Name"
+						value={this.state.lName}
 						onChange={this.onlNameChange}
 					></input>
 					<input
 						type="email"
 						placeholder="Email"
+						value={this.state.email}
 						onChange={this.onEmailChange}
 					></input>
-					<input type="rating" onChange={this.onRatingChange}></input>
+					<input
+						type="rating"
+						value={this.state.rating}
+						onChange={this.onRatingChange}
+					></input>
 					<label for="review">Comments:</label>
 					<input
 						type="text"
 						id="review"
+						value={this.state.review}
 						onChange={this.onReviewChange}
 					></input>
 					<button>Submit</button>
 				</form>
 			</div>
 		);
+		// } else {
+		// 	<h2>Thank you for your input!</h2>;
+		// }
 	}
 }
