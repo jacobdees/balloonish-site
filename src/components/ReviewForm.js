@@ -40,7 +40,7 @@ export default class ReviewForm extends React.Component {
 	};
 
 	onSubmit = (e) => {
-		e.preventDefault();
+		// e.preventDefault();
 		// send submitted info to back-end
 
 		if (!this.state.email || !this.state.rating) {
@@ -53,7 +53,7 @@ export default class ReviewForm extends React.Component {
 				fName: this.state.fName,
 				lName: this.state.lName,
 				email: this.state.email,
-				rating: this.state.rating,
+				rating: parseFloat(this.state.rating),
 				review: this.state.review,
 			});
 		}
@@ -63,51 +63,51 @@ export default class ReviewForm extends React.Component {
 		// if (this.state.error === '') {
 		return (
 			<div>
-				{this.state.error && (
+				{this.state.error === undefined ? (
+					<div>
+						<h2>Leave a Review!</h2>
+						<form onSubmit={this.onSubmit}>
+							<input
+								type="text"
+								id="fName"
+								placeholder="First Name"
+								value={this.state.fName}
+								onChange={this.onfNameChange}
+							></input>
+							<input
+								type="text"
+								id="lName"
+								placeholder="Last Name"
+								value={this.state.lName}
+								onChange={this.onlNameChange}
+							></input>
+							<input
+								type="email"
+								placeholder="Email"
+								value={this.state.email}
+								onChange={this.onEmailChange}
+							></input>
+							<input
+								type="rating"
+								value={this.state.rating}
+								onChange={this.onRatingChange}
+							></input>
+							<label for="review">Comments:</label>
+							<input
+								type="text"
+								id="review"
+								value={this.state.review}
+								onChange={this.onReviewChange}
+							></input>
+							<button>Submit</button>
+						</form>
+					</div>
+				) : (
 					<h2>
 						Thank you for submitting your review of balloon.ish!
 					</h2>
 				)}
-				<h2>Leave a Review!</h2>
-				<form onSubmit={this.onSubmit}>
-					<input
-						type="text"
-						id="fName"
-						placeholder="First Name"
-						value={this.state.fName}
-						onChange={this.onfNameChange}
-					></input>
-					<input
-						type="text"
-						id="lName"
-						placeholder="Last Name"
-						value={this.state.lName}
-						onChange={this.onlNameChange}
-					></input>
-					<input
-						type="email"
-						placeholder="Email"
-						value={this.state.email}
-						onChange={this.onEmailChange}
-					></input>
-					<input
-						type="rating"
-						value={this.state.rating}
-						onChange={this.onRatingChange}
-					></input>
-					<label for="review">Comments:</label>
-					<input
-						type="text"
-						id="review"
-						value={this.state.review}
-						onChange={this.onReviewChange}
-					></input>
-					<button>Submit</button>
-				</form>
 			</div>
 		);
-		// } else {
-		// 	<h2>Thank you for your input!</h2>;
-		// }
 	}
 }
