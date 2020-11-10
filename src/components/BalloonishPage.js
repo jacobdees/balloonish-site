@@ -5,6 +5,7 @@ import AboutPage from './AboutPage';
 import ReviewForm from './ReviewForm';
 import ReviewsPage from './ReviewsPage';
 import ExploreProductsPage from './ExploreProductsPage';
+import Footer from './Footer';
 
 export default class BalloonishPage extends React.Component {
 	render() {
@@ -17,6 +18,7 @@ export default class BalloonishPage extends React.Component {
 				<PurchasePage />
 				<AboutPage />
 				<ReviewForm />
+				<Footer />
 			</div>
 		);
 	}
