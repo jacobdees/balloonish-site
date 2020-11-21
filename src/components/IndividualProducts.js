@@ -12,13 +12,18 @@ import {
 const IndividualProducts = (props) => {
 	return (
 		<div>
-			<Card>
+			<Card className="col-4">
 				{/* <CardImg src={myPicture} /> */}
 				<CardBody>
-					<CardTitle>{props.title}</CardTitle>
-					<CardSubtitle>Price of {props.title}</CardSubtitle>
-					<CardText>Description of {props.title}</CardText>
-					<Button>More Info</Button>
+					<CardTitle>
+						{props.title} ({props.type})
+					</CardTitle>
+					<CardSubtitle>${props.price}</CardSubtitle>
+					<CardText>
+						{props.size} - Up to {props.colors} colors
+					</CardText>
+					<CardText>{props.details}</CardText>
+					{/* <Button>More Info</Button> */}
 				</CardBody>
 			</Card>
 		</div>

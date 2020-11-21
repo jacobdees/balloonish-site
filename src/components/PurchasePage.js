@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import Modal from 'react-modal';
-import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import 'react-phone-number-input/style.css';
+import PhoneInput, { normalize } from 'react-phone-input-auto-format';
 
 export default class PurchasePage extends React.Component {
 	constructor(props) {
@@ -18,8 +18,7 @@ export default class PurchasePage extends React.Component {
 			email: props.email,
 			pref: props.pref,
 			item: props.item,
-			startDate: null,
-			setStartDate: null,
+			date: props.date,
 			calendarFocused: false,
 			note: props.note,
 		};
@@ -36,8 +35,9 @@ export default class PurchasePage extends React.Component {
 	};
 
 	onTelChange = (e) => {
-		const tel = e.target.value;
-		this.setState(() => ({ tel }));
+		const tel = normalize(e);
+		const normTel = normalize(tel);
+		this.setState(() => ({ normTel }));
 	};
 
 	onEmailChange = (e) => {
@@ -46,7 +46,7 @@ export default class PurchasePage extends React.Component {
 	};
 
 	onPrefChange = (e) => {
-		const email = e.target.value;
+		const pref = e.target.value;
 		this.setState(() => ({ pref }));
 	};
 
@@ -57,7 +57,7 @@ export default class PurchasePage extends React.Component {
 
 	onDateChange = (e) => {
 		// const date = e.target.value;
-		this.setState(() => ({ startDate: e }));
+		this.setState(() => ({ date: e }));
 	};
 
 	onFocusChange = ({ focused }) => {
@@ -102,13 +102,20 @@ export default class PurchasePage extends React.Component {
 							value={this.state.lName}
 							onChange={this.onlNameChange}
 						></input>
-						<input
+						<PhoneInput
 							type="tel"
 							id="tel"
 							placeholder="Phone"
 							value={this.state.tel}
 							onChange={this.onTelChange}
-						></input>
+						/>
+						{/* <input
+							type="tel"
+							id="tel"
+							placeholder="Phone"
+							value={this.state.tel}
+							onChange={this.onTelChange}
+						></input> */}
 						<input
 							type="email"
 							placeholder="Email"
@@ -137,17 +144,10 @@ export default class PurchasePage extends React.Component {
 							<option value="item3">Item #3</option>
 						</select>
 						<DatePicker
-							selected={this.state.startDate}
+							selected={this.state.date}
 							onChange={(date) => this.onDateChange(date)}
 							placeholderText="Choose a Date"
 						/>
-						{/* <SingleDatePicker
-							date={this.state.date}
-							onDateChange={this.onDateChange}
-							focused={this.state.calendarFocused}
-							onFocusChange={this.onFocusChange}
-							id="date"
-						/> */}
 						<label for="note">Note: </label>
 						<textarea
 							type="text"

@@ -5,7 +5,7 @@ import PurchasePage from './PurchasePage';
 export default class Header extends React.Component {
 	render() {
 		return (
-			<div>
+			<div className="header sticky-top">
 				<h1>balloon.ish</h1>
 				<Button className="btn-danger" onClick={this.props.onClick}>
 					Order Now
