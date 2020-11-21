@@ -7,7 +7,6 @@ export default class PurchasePage extends React.Component {
 		super(props);
 
 		this.state = {
-			modalOpen: false,
 			error: undefined,
 			fName: props.fName,
 			lName: props.lName,
@@ -19,13 +18,13 @@ export default class PurchasePage extends React.Component {
 		};
 	}
 
-	openModal = () => {
-		this.setState(() => ({ modalOpen: true }));
-	};
+	// openModal = () => {
+	// 	this.setState(() => ({ modalOpen: true }));
+	// };
 
-	handleClose = () => {
-		this.setState(() => ({ modalOpen: false }));
-	};
+	// handleClose = () => {
+	// 	this.setState(() => ({ modalOpen: false }));
+	// };
 
 	onfNameChange = (e) => {
 		const fName = e.target.value;
@@ -71,12 +70,12 @@ export default class PurchasePage extends React.Component {
 	render() {
 		return (
 			<div>
-				<Button className="btn-danger" onClick={this.openModal}>
+				<Button className="btn-danger" onClick={this.props.onClick}>
 					Order Here
 				</Button>
 				<Modal
-					isOpen={this.state.modalOpen}
-					onRequestClose={this.handleClose}
+					isOpen={this.props.modalOpen}
+					onRequestClose={this.props.handleClose}
 				>
 					<h1>Purchase Information</h1>
 					<form onSubmit={this.onSubmit}>
