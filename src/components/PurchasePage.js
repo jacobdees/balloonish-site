@@ -18,8 +18,8 @@ export default class PurchasePage extends React.Component {
 			email: props.email,
 			pref: props.pref,
 			item: props.item,
-			startDate: new Date(),
-			setStartDate: new Date(),
+			startDate: null,
+			setStartDate: null,
 			calendarFocused: false,
 			note: props.note,
 		};
@@ -139,6 +139,7 @@ export default class PurchasePage extends React.Component {
 						<DatePicker
 							selected={this.state.startDate}
 							onChange={(date) => this.onDateChange(date)}
+							placeholderText="Choose a Date"
 						/>
 						{/* <SingleDatePicker
 							date={this.state.date}
