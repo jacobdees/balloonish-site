@@ -1,6 +1,10 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import Modal from 'react-modal';
+import { SingleDatePicker } from 'react-dates';
+import 'react-dates/lib/css/_datepicker.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default class PurchasePage extends React.Component {
 	constructor(props) {
@@ -14,17 +18,12 @@ export default class PurchasePage extends React.Component {
 			email: props.email,
 			pref: props.pref,
 			item: props.item,
+			startDate: new Date(),
+			setStartDate: new Date(),
+			calendarFocused: false,
 			note: props.note,
 		};
 	}
-
-	// openModal = () => {
-	// 	this.setState(() => ({ modalOpen: true }));
-	// };
-
-	// handleClose = () => {
-	// 	this.setState(() => ({ modalOpen: false }));
-	// };
 
 	onfNameChange = (e) => {
 		const fName = e.target.value;
@@ -56,6 +55,15 @@ export default class PurchasePage extends React.Component {
 		this.setState(() => ({ item }));
 	};
 
+	onDateChange = (e) => {
+		// const date = e.target.value;
+		this.setState(() => ({ startDate: e }));
+	};
+
+	onFocusChange = ({ focused }) => {
+		this.setState(() => ({ calendarFocused: focused }));
+	};
+
 	onNoteChange = (e) => {
 		const note = e.target.value;
 		this.setState(() => ({ note }));
@@ -64,7 +72,7 @@ export default class PurchasePage extends React.Component {
 	onSubmit = (e) => {
 		e.preventDefault();
 
-		this.handleClose();
+		this.props.handleClose();
 	};
 
 	render() {
@@ -107,8 +115,8 @@ export default class PurchasePage extends React.Component {
 							value={this.state.email}
 							onChange={this.onEmailChange}
 						></input>
-						<label for="pref">Preferred Method of Contact: </label>
-						{/* <div onChange={this.onPrefChange}>
+						{/* <label for="pref">Preferred Method of Contact: </label>
+						<div onChange={this.onPrefChange}>
 							<input type="radio" name="pref" value="phone">
 								Phone
 							</input>
@@ -128,14 +136,25 @@ export default class PurchasePage extends React.Component {
 							<option value="item2">Item #2</option>
 							<option value="item3">Item #3</option>
 						</select>
+						<DatePicker
+							selected={this.state.startDate}
+							onChange={(date) => this.onDateChange(date)}
+						/>
+						{/* <SingleDatePicker
+							date={this.state.date}
+							onDateChange={this.onDateChange}
+							focused={this.state.calendarFocused}
+							onFocusChange={this.onFocusChange}
+							id="date"
+						/> */}
 						<label for="note">Note: </label>
-						<input
+						<textarea
 							type="text"
 							id="note"
 							placeholder="(Optional)"
 							value={this.state.review}
 							onChange={this.onNoteChange}
-						></input>
+						></textarea>
 						<button>Submit</button>
 					</form>
 				</Modal>
