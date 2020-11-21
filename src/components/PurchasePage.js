@@ -9,9 +9,11 @@ export default class PurchasePage extends React.Component {
 		this.state = {
 			modalOpen: false,
 			error: undefined,
-			lName: props.lName,
 			fName: props.fName,
+			lName: props.lName,
+			tel: props.tel,
 			email: props.email,
+			pref: props.pref,
 			item: props.item,
 			note: props.note,
 		};
@@ -35,9 +37,19 @@ export default class PurchasePage extends React.Component {
 		this.setState(() => ({ lName }));
 	};
 
+	onTelChange = (e) => {
+		const tel = e.target.value;
+		this.setState(() => ({ tel }));
+	};
+
 	onEmailChange = (e) => {
 		const email = e.target.value;
 		this.setState(() => ({ email }));
+	};
+
+	onPrefChange = (e) => {
+		const email = e.target.value;
+		this.setState(() => ({ pref }));
 	};
 
 	onItemChange = (e) => {
@@ -50,6 +62,12 @@ export default class PurchasePage extends React.Component {
 		this.setState(() => ({ note }));
 	};
 
+	onSubmit = (e) => {
+		e.preventDefault();
+
+		this.handleClose();
+	};
+
 	render() {
 		return (
 			<div>
@@ -59,7 +77,6 @@ export default class PurchasePage extends React.Component {
 				<Modal
 					isOpen={this.state.modalOpen}
 					onRequestClose={this.handleClose}
-					closeTimeoutMS={200}
 				>
 					<h1>Purchase Information</h1>
 					<form onSubmit={this.onSubmit}>
@@ -78,19 +95,35 @@ export default class PurchasePage extends React.Component {
 							value={this.state.lName}
 							onChange={this.onlNameChange}
 						></input>
-						<input type="tel" id="tel"></input>
+						<input
+							type="tel"
+							id="tel"
+							placeholder="Phone"
+							value={this.state.tel}
+							onChange={this.onTelChange}
+						></input>
 						<input
 							type="email"
 							placeholder="Email"
 							value={this.state.email}
 							onChange={this.onEmailChange}
 						></input>
+						<label for="pref">Preferred Method of Contact: </label>
+						{/* <div onChange={this.onPrefChange}>
+							<input type="radio" name="pref" value="phone">
+								Phone
+							</input>
+							<input type="radio" name="pref" value="email">
+								Email
+							</input>
+						</div> */}
 						<label for="item">Choose an Item: </label>
 						<select
 							id="item"
 							required
 							value={this.state.item}
 							onChange={this.onItemChange}
+							placeholder="Choose an Item"
 						>
 							<option value="item1">Item #1</option>
 							<option value="item2">Item #2</option>
