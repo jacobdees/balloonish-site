@@ -29,16 +29,18 @@ export default class BalloonishPage extends React.Component {
 					modalOpen={this.state.modalOpen}
 					handleClose={this.handleClose}
 				/>
-				<Carousel />
-				<ReviewsPage />
-				<ExploreProductsPage />
-				<PurchasePage
-					onClick={this.openModal}
-					modalOpen={this.state.modalOpen}
-					handleClose={this.handleClose}
-				/>
-				<AboutPage />
-				<ReviewForm />
+				<div className="container">
+					<Carousel />
+					<ReviewsPage />
+					<ExploreProductsPage />
+					<PurchasePage
+						onClick={this.openModal}
+						modalOpen={this.state.modalOpen}
+						handleClose={this.handleClose}
+					/>
+					<AboutPage />
+					<ReviewForm />
+				</div>
 				<Footer />
 			</div>
 		);

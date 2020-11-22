@@ -1,0 +1,8 @@
+.container {
+	max-width: 80rem;
+	// top-bottom first
+	// left-right second
+	margin: 0 auto;
+	// this keeps the text from hitting the sides in smaller viewports
+	padding: 0 $m-size;
+}
