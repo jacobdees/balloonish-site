@@ -1,5 +1,7 @@
 import React from 'react';
+// import ReactDOM from 'react-dom';
 import { Button } from 'reactstrap';
+// import Button from '@material-ui/core/Button';
 import PurchasePage from './PurchasePage';
 
 export default class Header extends React.Component {
