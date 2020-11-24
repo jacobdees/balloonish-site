@@ -2,6 +2,6 @@ import React from 'react';
 
 export default class Footer extends React.Component {
 	render() {
-		return <p>Instagram Info</p>;
+		return <p>Follow us on Instagram</p>;
 	}
 }
