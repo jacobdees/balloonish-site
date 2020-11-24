@@ -77,14 +77,14 @@ export default class ReviewForm extends React.Component {
 				{this.state.error === undefined ? (
 					<div className="row">
 						<h2
-							className="col-sm-4 text-center display-4 my-auto order-sm-12 pb-sm-3 pb-5"
+							className="col-md-4 text-center display-4 my-auto order-md-12 pb-md-3 pb-5"
 							style={{ height: '100%' }}
 						>
 							Leave a Review!
 						</h2>
 						<Form
 							onSubmit={this.onSubmit}
-							className="col-sm-8 order-sm-1"
+							className="col-md-8 order-md-1"
 						>
 							<Row form>
 								<Col md={6}>
@@ -159,9 +159,11 @@ export default class ReviewForm extends React.Component {
 									onChange={this.onPictureChange}
 								/>
 							</FormGroup> */}
-							<Button className="order-button col-12">
-								Submit
-							</Button>
+							<div className="d-flex justify-content-center">
+								<Button className="order-button col-12 col-lg-8">
+									Submit
+								</Button>
+							</div>
 						</Form>
 					</div>
 				) : (

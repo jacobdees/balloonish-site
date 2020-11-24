@@ -24,17 +24,16 @@ const IndividualProducts = (props) => {
 	// 	this.setState(() => ({ modalOpen: false }));
 	// };
 	return (
-		<Card className="item-cards col-lg-3 m-4">
+		<Card className="item-cards m-5 col-md-3">
 			{/* <CardImg src={myPicture} /> */}
-			<CardBody>
-				<CardTitle>
-					{props.title}
-					<br />({props.type})
+			<CardBody className="row d-flex align-items-end">
+				<CardTitle className="item-card-title col-12 text-center">
+					{props.title} ({props.type})
 				</CardTitle>
-				<CardSubtitle>${props.price}</CardSubtitle>
-				<CardText>
+				{/* <CardSubtitle>${props.price}</CardSubtitle> */}
+				{/* <CardText className="col-12">
 					{props.size} - Up to {props.colors} colors
-				</CardText>
+				</CardText> */}
 				{/* <CardText>{props.details}</CardText> */}
 				{/* <Button>More Info</Button> */}
 			</CardBody>

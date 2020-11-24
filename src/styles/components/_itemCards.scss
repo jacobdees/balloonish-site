@@ -1,18 +1,22 @@
 .item-cards {
-	width: 35rem;
+	width: 30rem;
 	height: 40rem;
 	// padding: $s-size;
 	// margin: $s-size;
-	box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
-	text-align: center;
+	box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.08);
+	// text-align: center;
 	background-color: $off-white;
 	border-radius: $s-size;
-	align-items: center;
+	// align-items: center;
+	border: none;
 	// display: flex;
+	// align-self: flex-end;
 }
 
-// .item-cards-title {
-// }
+.item-card-title {
+	background-color: white;
+	border-radius: 5px;
+}
 
 // .item-cards-subtitle {
 // }

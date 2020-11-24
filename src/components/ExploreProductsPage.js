@@ -95,7 +95,7 @@ export default class ExploreProducts extends React.Component {
 					<h2 className="col-12 text-center display-4">
 						What will you celebrate today?
 					</h2>
-					<div className="">
+					<div className="container-fluid">
 						<div className="row d-flex justify-content-around">
 							{menuItems.map((m) => (
 								<IndividualProducts
