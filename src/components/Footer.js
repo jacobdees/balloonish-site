@@ -3,7 +3,13 @@ import React from 'react';
 export default class Footer extends React.Component {
 	render() {
 		return (
-			<h2 className="py-5 my-5 text-center">Follow us on Instagram</h2>
+			<div className="container-fluid">
+				<div className="row d-flex footer align-items-center">
+					<h2 className="col-12 text-center">
+						Follow us on Instagram
+					</h2>
+				</div>
+			</div>
 		);
 	}
 }
