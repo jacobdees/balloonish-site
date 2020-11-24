@@ -1,4 +1,15 @@
 import React from 'react';
+import {
+	Col,
+	Row,
+	Button,
+	Form,
+	FormGroup,
+	Label,
+	Input,
+	FormText,
+} from 'reactstrap';
+import SimpleRating from './SimpleRating';
 
 export default class ReviewForm extends React.Component {
 	constructor(props) {
@@ -64,43 +75,85 @@ export default class ReviewForm extends React.Component {
 		return (
 			<div>
 				{this.state.error === undefined ? (
-					<div>
-						<h2>Leave a Review!</h2>
-						<form onSubmit={this.onSubmit}>
-							<input
-								type="text"
-								id="fName"
-								placeholder="First Name"
-								value={this.state.fName}
-								onChange={this.onfNameChange}
-							></input>
-							<input
-								type="text"
-								id="lName"
-								placeholder="Last Name"
-								value={this.state.lName}
-								onChange={this.onlNameChange}
-							></input>
-							<input
-								type="email"
-								placeholder="Email"
-								value={this.state.email}
-								onChange={this.onEmailChange}
-							></input>
-							<input
-								type="rating"
-								value={this.state.rating}
-								onChange={this.onRatingChange}
-							></input>
-							<label htmlFor="review">Comments:</label>
-							<input
-								type="text"
-								id="review"
-								value={this.state.review}
-								onChange={this.onReviewChange}
-							></input>
-							<button>Submit</button>
-						</form>
+					<div className="row">
+						<h2
+							className="col-sm-4 text-center display-4 my-auto order-sm-12 py-5"
+							style={{ height: '100%' }}
+						>
+							Leave a Review!
+						</h2>
+						<Form
+							onSubmit={this.onSubmit}
+							className="col-sm-8 order-sm-1"
+						>
+							<Row form>
+								<Col md={6}>
+									<FormGroup>
+										<Input
+											type="text"
+											id="fName"
+											placeholder="First Name"
+											value={this.state.fName}
+											onChange={this.onfNameChange}
+										></Input>
+									</FormGroup>
+								</Col>
+								<Col md={6}>
+									<FormGroup>
+										<Input
+											type="text"
+											id="lName"
+											placeholder="Last Name"
+											value={this.state.lName}
+											onChange={this.onlNameChange}
+										></Input>
+									</FormGroup>
+								</Col>
+							</Row>
+							<FormGroup>
+								<Input
+									type="email"
+									placeholder="Email"
+									value={this.state.email}
+									onChange={this.onEmailChange}
+								></Input>
+							</FormGroup>
+							<Row form>
+								<Col md={3}>
+									<FormGroup>
+										{/* <Label htmlFor="rating">Rating</Label> */}
+										<SimpleRating />
+									</FormGroup>
+								</Col>
+								<Col md={9}>
+									<FormGroup>
+										{/* <Label htmlFor="review">
+											Comments:
+										</Label> */}
+										<Input
+											type="textarea"
+											id="review"
+											value={this.state.review}
+											onChange={this.onReviewChange}
+											placeholder="Comments"
+										></Input>
+									</FormGroup>
+								</Col>
+							</Row>
+							{/* <FormGroup>
+								<Label htmlFor="customerPicture">Picture</Label>
+								<Input
+									type="file"
+									name="file"
+									id="customerPicture"
+									value={this.state.picture}
+									onChange={this.onPictureChange}
+								/>
+							</FormGroup> */}
+							<Button className="order-button col-12">
+								Submit
+							</Button>
+						</Form>
 					</div>
 				) : (
 					<h2>
