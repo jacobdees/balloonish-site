@@ -13,13 +13,15 @@ export default class Reviews extends React.Component {
 				id: 2,
 				author: 'IW',
 				rating: 3,
-				text: "It's OKAY.",
+				text:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam justo, mollis quis felis a, blandit hendrerit ex. Suspendisse pulvinar ante sit amet placerat venenatis.',
 			},
 			{
 				id: 3,
 				author: 'QO',
 				rating: 1,
-				text: 'Kameron sucks!!!',
+				text:
+					'Aenean porttitor ornare sagittis. Integer at convallis magna. Morbi pulvinar lacinia malesuada.',
 			},
 		];
 		const selectedReview =
@@ -29,15 +31,17 @@ export default class Reviews extends React.Component {
 				{/* <h2 className="col-12 text-center display-4">
 					Hear what others have to say...
 				</h2> */}
-				<h3 className="col-12 display-4 text-center">
-					"{selectedReview.text}"
-				</h3>
-				{/* <div className="row justify-content-center">
-					<p className="lead justify-content-center">
-						- {selectedReview.author}
-					</p>
-				</div> */}
-				{/* insert image here */}
+				<div className="row justify-content-center">
+					<h3 className="col-10 display-4 display-md-3 text-center">
+						"{selectedReview.text}"
+					</h3>
+					{/* <div className="row justify-content-center">
+						<p className="lead justify-content-center">
+							- {selectedReview.author}
+						</p>
+					</div> */}
+					{/* insert image here */}
+				</div>
 			</div>
 		);
 	}

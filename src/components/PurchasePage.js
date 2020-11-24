@@ -78,9 +78,9 @@ export default class PurchasePage extends React.Component {
 	render() {
 		return (
 			<div>
-				<Button className="btn-danger" onClick={this.props.onClick}>
+				{/* <Button className="btn-danger" onClick={this.props.onClick}>
 					Order Here
-				</Button>
+				</Button> */}
 				<Modal
 					isOpen={this.props.modalOpen}
 					onRequestClose={this.props.handleClose}
@@ -122,7 +122,7 @@ export default class PurchasePage extends React.Component {
 							value={this.state.email}
 							onChange={this.onEmailChange}
 						></input>
-						{/* <label for="pref">Preferred Method of Contact: </label>
+						{/* <label htmlFor="pref">Preferred Method of Contact: </label>
 						<div onChange={this.onPrefChange}>
 							<input type="radio" name="pref" value="phone">
 								Phone
@@ -131,7 +131,7 @@ export default class PurchasePage extends React.Component {
 								Email
 							</input>
 						</div> */}
-						<label for="item">Choose an Item: </label>
+						<label htmlFor="item">Choose an Item: </label>
 						<select
 							id="item"
 							required
@@ -148,7 +148,7 @@ export default class PurchasePage extends React.Component {
 							onChange={(date) => this.onDateChange(date)}
 							placeholderText="Choose a Date"
 						/>
-						<label for="note">Note: </label>
+						<label htmlFor="note">Note: </label>
 						<textarea
 							type="text"
 							id="note"

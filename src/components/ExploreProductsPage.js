@@ -2,6 +2,18 @@ import React from 'react';
 import IndividualProducts from './IndividualProducts';
 
 export default class ExploreProducts extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			modalOpen: false,
+		};
+	}
+	openModal = () => {
+		this.setState(() => ({ modalOpen: true }));
+	};
+	handleClose = () => {
+		this.setState(() => ({ modalOpen: false }));
+	};
 	render() {
 		const menuItems = [
 			{
@@ -78,19 +90,31 @@ export default class ExploreProducts extends React.Component {
 			},
 		];
 		return (
-			<div>
-				<h2>What will you celebrate today?</h2>
-				{menuItems.map((m) => (
-					<IndividualProducts
-						key={m.id}
-						title={m.item}
-						type={m.type}
-						size={m.size}
-						colors={m.colors}
-						price={m.price}
-						details={m.details}
-					/>
-				))}
+			<div className="container">
+				<div className="">
+					<h2 className="col-12 text-center display-4">
+						What will you celebrate today?
+					</h2>
+					<div className="">
+						<div className="items-deck">
+							{menuItems.map((m) => (
+								<IndividualProducts
+									// className="row"
+									key={m.id}
+									title={m.item}
+									type={m.type}
+									size={m.size}
+									colors={m.colors}
+									price={m.price}
+									details={m.details}
+									onClick={this.openModal}
+									modalOpen={this.state.modalOpen}
+									handleClose={this.handleClose}
+								/>
+							))}
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	}
