@@ -9,6 +9,9 @@ import {
 	Input,
 	FormText,
 } from 'reactstrap';
+import Rating from '@material-ui/lab/Rating';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import SimpleRating from './SimpleRating';
 
 export default class ReviewForm extends React.Component {
@@ -130,7 +133,29 @@ export default class ReviewForm extends React.Component {
 										>
 											Rating
 										</Label>
-										<SimpleRating />
+										{/* <SimpleRating
+											rating={this.state.rating}
+										/> */}
+										<div>
+											<Box
+												component="fieldset"
+												borderColor="transparent"
+												display="flex"
+												alignItems="center"
+												justifyContent="center"
+											>
+												{/* <Typography component="legend">Pristine</Typography> */}
+												<Rating
+													name="pristine"
+													value={this.state.rating}
+													onChange={
+														this.onRatingChange
+													}
+													size="large"
+													// precision={0.5}
+												/>
+											</Box>
+										</div>
 									</FormGroup>
 								</Col>
 								<Col md={9}>
@@ -167,9 +192,9 @@ export default class ReviewForm extends React.Component {
 						</Form>
 					</div>
 				) : (
-					<h2>
+					<h1 className="text-center">
 						Thank you for submitting your review of balloon.ish!
-					</h2>
+					</h1>
 				)}
 			</div>
 		);

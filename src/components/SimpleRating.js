@@ -13,7 +13,13 @@ export default class SimpleRating extends React.Component {
 		};
 	}
 
+	handleRatingChange = (e) => {
+		this.props.rating(e.target.value);
+		this.state.value(e.target.value);
+	};
+
 	render() {
+		const rating = this.props.rating;
 		return (
 			<div>
 				<Box
@@ -26,7 +32,8 @@ export default class SimpleRating extends React.Component {
 					{/* <Typography component="legend">Pristine</Typography> */}
 					<Rating
 						name="pristine"
-						value={this.value}
+						value={this.state.value}
+						onChange={this.handleRatingChange}
 						size="large"
 						// precision={0.5}
 					/>
