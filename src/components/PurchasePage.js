@@ -78,9 +78,12 @@ export default class PurchasePage extends React.Component {
 	render() {
 		return (
 			<div>
-				{/* <Button className="btn-danger" onClick={this.props.onClick}>
+				<Button
+					className="order-button col-12 text-center py-4 my-5"
+					onClick={this.props.onClick}
+				>
 					Order Here
-				</Button> */}
+				</Button>
 				<Modal
 					isOpen={this.props.modalOpen}
 					onRequestClose={this.props.handleClose}

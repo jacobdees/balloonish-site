@@ -10,6 +10,7 @@ import {
 } from 'reactstrap';
 
 const IndividualProducts = (props) => {
+	// export default class IndividualProducts extends React.Component {
 	// constructor(props) {
 	// 	super(props);
 	// 	this.state = {
@@ -28,7 +29,8 @@ const IndividualProducts = (props) => {
 				{/* <CardImg src={myPicture} /> */}
 				<CardBody>
 					<CardTitle>
-						{props.title} ({props.type})
+						{props.title}
+						<br />({props.type})
 					</CardTitle>
 					<CardSubtitle>${props.price}</CardSubtitle>
 					<CardText>
@@ -37,6 +39,9 @@ const IndividualProducts = (props) => {
 					{/* <CardText>{props.details}</CardText> */}
 					{/* <Button>More Info</Button> */}
 				</CardBody>
+				{/* <Button className="order-button" onClick={props.onClick}>
+					Order
+				</Button> */}
 				{/* <PurchasePage
 						onClick={this.openModal}
 						modalOpen={this.state.modalOpen}

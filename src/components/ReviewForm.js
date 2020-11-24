@@ -92,7 +92,7 @@ export default class ReviewForm extends React.Component {
 								value={this.state.rating}
 								onChange={this.onRatingChange}
 							></input>
-							<label for="review">Comments:</label>
+							<label htmlFor="review">Comments:</label>
 							<input
 								type="text"
 								id="review"
