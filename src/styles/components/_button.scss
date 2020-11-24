@@ -1,7 +1,9 @@
 .order-button {
 	background: $dark-blue;
 	border: none;
+	border-radius: 5px;
 	font-size: $s-size;
 	vertical-align: end;
 	padding: $s-size;
+	font-family: 'Quicksand', sans-serif;
 }

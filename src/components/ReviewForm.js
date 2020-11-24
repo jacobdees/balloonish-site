@@ -77,7 +77,7 @@ export default class ReviewForm extends React.Component {
 				{this.state.error === undefined ? (
 					<div className="row">
 						<h2
-							className="col-sm-4 text-center display-4 my-auto order-sm-12 py-5"
+							className="col-sm-4 text-center display-4 my-auto order-sm-12 pb-sm-3 pb-5"
 							style={{ height: '100%' }}
 						>
 							Leave a Review!
@@ -95,6 +95,7 @@ export default class ReviewForm extends React.Component {
 											placeholder="First Name"
 											value={this.state.fName}
 											onChange={this.onfNameChange}
+											className="form-box"
 										></Input>
 									</FormGroup>
 								</Col>
@@ -106,6 +107,7 @@ export default class ReviewForm extends React.Component {
 											placeholder="Last Name"
 											value={this.state.lName}
 											onChange={this.onlNameChange}
+											className="form-box"
 										></Input>
 									</FormGroup>
 								</Col>
@@ -116,12 +118,18 @@ export default class ReviewForm extends React.Component {
 									placeholder="Email"
 									value={this.state.email}
 									onChange={this.onEmailChange}
+									className="form-box"
 								></Input>
 							</FormGroup>
 							<Row form>
 								<Col md={3}>
-									<FormGroup>
-										{/* <Label htmlFor="rating">Rating</Label> */}
+									<FormGroup className="text-center">
+										<Label
+											htmlFor="rating"
+											className="text-center"
+										>
+											Rating
+										</Label>
 										<SimpleRating />
 									</FormGroup>
 								</Col>
@@ -136,6 +144,7 @@ export default class ReviewForm extends React.Component {
 											value={this.state.review}
 											onChange={this.onReviewChange}
 											placeholder="Comments"
+											className="form-box"
 										></Input>
 									</FormGroup>
 								</Col>

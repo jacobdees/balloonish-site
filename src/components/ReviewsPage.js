@@ -32,7 +32,7 @@ export default class Reviews extends React.Component {
 					Hear what others have to say...
 				</h2> */}
 				<div className="row justify-content-center">
-					<h3 className="col-10 display-4 display-md-3 text-center">
+					<h3 className="col-10 col-md-6 display-4 display-md-3 text-center">
 						"{selectedReview.text}"
 					</h3>
 					{/* <div className="row justify-content-center">

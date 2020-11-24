@@ -1,6 +1,16 @@
 import React from 'react';
-import { Button } from 'reactstrap';
-import Modal from 'react-modal';
+import {
+	Col,
+	Row,
+	Button,
+	Form,
+	FormGroup,
+	Label,
+	Input,
+	Dropdown,
+	Modal,
+	ModalHeader,
+} from 'reactstrap';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-phone-number-input/style.css';
@@ -82,85 +92,196 @@ export default class PurchasePage extends React.Component {
 					className="order-button col-12 text-center py-4 my-5"
 					onClick={this.props.onClick}
 				>
-					Order Here
+					Order Now
 				</Button>
 				<Modal
 					isOpen={this.props.modalOpen}
-					onRequestClose={this.props.handleClose}
+					toggle={this.props.handleClose}
+					className="full-modal"
+					centered
+					size="md"
 				>
-					<h1>Purchase Information</h1>
-					<form onSubmit={this.onSubmit}>
-						<input
-							type="text"
-							id="fName"
-							autoFocus
-							placeholder="First Name"
-							value={this.state.fName}
-							onChange={this.onfNameChange}
-						></input>
-						<input
-							type="text"
-							id="lName"
-							placeholder="Last Name"
-							value={this.state.lName}
-							onChange={this.onlNameChange}
-						></input>
-						<PhoneInput
-							type="tel"
-							id="tel"
-							placeholder="Phone"
-							value={this.state.tel}
-							onChange={this.onTelChange}
-						/>
-						{/* <input
-							type="tel"
-							id="tel"
-							placeholder="Phone"
-							value={this.state.tel}
-							onChange={this.onTelChange}
-						></input> */}
-						<input
-							type="email"
-							placeholder="Email"
-							value={this.state.email}
-							onChange={this.onEmailChange}
-						></input>
-						{/* <label htmlFor="pref">Preferred Method of Contact: </label>
-						<div onChange={this.onPrefChange}>
-							<input type="radio" name="pref" value="phone">
-								Phone
-							</input>
-							<input type="radio" name="pref" value="email">
-								Email
-							</input>
-						</div> */}
-						<label htmlFor="item">Choose an Item: </label>
-						<select
-							id="item"
-							required
-							value={this.state.item}
-							onChange={this.onItemChange}
-							placeholder="Choose an Item"
-						>
-							<option value="item1">Item #1</option>
-							<option value="item2">Item #2</option>
-							<option value="item3">Item #3</option>
-						</select>
-						<DatePicker
-							selected={this.state.date}
-							onChange={(date) => this.onDateChange(date)}
-							placeholderText="Choose a Date"
-						/>
-						<label htmlFor="note">Note: </label>
-						<textarea
-							type="text"
-							id="note"
-							placeholder="(Optional)"
-							value={this.state.review}
-							onChange={this.onNoteChange}
-						></textarea>
-						<button>Submit</button>
-					</form>
+					<div className="modal-body">
+						<ModalHeader
+							toggle={this.props.handleClose}
+							charCode="&times;"
+							className="modal-title"
+							style={{
+								borderBottom: 'none',
+								textAlign: 'center',
+							}}
+						></ModalHeader>
+						<h1 className="col-12 text-center">
+							Purchase Information
+						</h1>
+						<Form onSubmit={this.onSubmit}>
+							<Row>
+								<Col xs={9} className="mx-auto my-2">
+									<FormGroup>
+										<Input
+											type="text"
+											id="fName"
+											autoFocus
+											placeholder="First Name"
+											value={this.state.fName}
+											onChange={this.onfNameChange}
+											className=" form-box"
+										/>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row>
+								<Col xs={9} className="mx-auto my-2">
+									<FormGroup>
+										<Input
+											type="text"
+											id="lName"
+											placeholder="Last Name"
+											value={this.state.lName}
+											onChange={this.onlNameChange}
+											className=" form-box"
+										/>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row>
+								<Col xs={9} className="mx-auto my-2">
+									<FormGroup>
+										<PhoneInput
+											type="tel"
+											id="tel"
+											placeholder="Phone"
+											value={this.state.tel}
+											onChange={this.onTelChange}
+											className="col-md-12 form-box"
+										/>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row>
+								<Col xs={9} className="mx-auto my-2">
+									<FormGroup>
+										<Input
+											type="email"
+											placeholder="Email"
+											value={this.state.email}
+											onChange={this.onEmailChange}
+											className=" form-box"
+										/>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row>
+								<Col
+									md={8}
+									className="mx-auto my-2 text-center"
+								>
+									<FormGroup tag="fieldset" check inline>
+										<FormGroup check inline>
+											<Label check>
+												Contact Preference{' '}
+											</Label>
+										</FormGroup>
+										<FormGroup check>
+											<Label check>
+												<Input
+													type="radio"
+													name="radio2"
+													className=""
+												/>{' '}
+												Phone
+											</Label>
+										</FormGroup>
+										<FormGroup check>
+											<Label check>
+												<Input
+													type="radio"
+													name="radio2"
+													className=""
+												/>{' '}
+												Email
+											</Label>
+										</FormGroup>
+										<FormGroup check>
+											<Label check>
+												<Input
+													type="radio"
+													name="radio2"
+													className=""
+												/>{' '}
+												Both
+											</Label>
+										</FormGroup>
+									</FormGroup>
+								</Col>
+							</Row>
+							{/* <Row> */}
+							{/* <Col xs={9} className="mx-auto my-2 text-center"> */}
+							{/* <FormGroup> */}
+							{/* ADD DROPDOWN BUTTON HERE */}
+							{/* <label htmlFor="item">
+												Choose an Item:{' '}
+											</label>
+											<Dropdown
+												id="item"
+												required
+												value={this.state.item}
+												onChange={this.onItemChange}
+												placeholder="Choose an Item"
+											>
+												<option value="item1">Item #1</option>
+												<option value="item2">Item #2</option>
+												<option value="item3">Item #3</option>
+											</Dropdown> */}
+							{/* </FormGroup> */}
+							{/* </Col> */}
+							{/* </Row> */}
+							<Row>
+								<Col
+									xs={9}
+									className="mx-auto my-2 text-center"
+								>
+									<FormGroup>
+										<DatePicker
+											selected={this.state.date}
+											onChange={(date) =>
+												this.onDateChange(date)
+											}
+											placeholderText="Choose a Date"
+											className=" form-box"
+										/>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row>
+								<Col xs={9} className="mx-auto my-2">
+									<FormGroup>
+										<Label htmlFor="note">
+											Extra Comments:{' '}
+										</Label>
+										<Input
+											type="textarea"
+											id="note"
+											placeholder="(Optional)"
+											value={this.state.review}
+											onChange={this.onNoteChange}
+											className=" form-box"
+										></Input>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row>
+								<Col
+									md={8}
+									className="mx-auto my-2 text-center"
+								>
+									<Button className="order-button col-12 col-md-8">
+										Submit
+									</Button>
+								</Col>
+							</Row>
+						</Form>
+					</div>
 				</Modal>
 			</div>
 		);

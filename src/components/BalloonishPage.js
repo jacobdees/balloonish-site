@@ -23,22 +23,23 @@ export default class BalloonishPage extends React.Component {
 	};
 	render() {
 		return (
-			<div className="page-background">
+			<div className="">
 				{this.state.modalOpen ? null : (
 					<Header
 						onClick={this.openModal}
 						modalOpen={this.state.modalOpen}
 						handleClose={this.handleClose}
+						className="animate__animated animate__bounceOutUp"
 					/>
 				)}
 				<Carousel />
 				<ReviewsPage />
-				<div className="container">
-					<ExploreProductsPage
-						onClick={this.openModal}
-						modalOpen={this.state.modalOpen}
-						handleClose={this.handleClose}
-					/>
+				<ExploreProductsPage
+					onClick={this.openModal}
+					modalOpen={this.state.modalOpen}
+					handleClose={this.handleClose}
+				/>
+				<div className="container w-75">
 					<PurchasePage
 						onClick={this.openModal}
 						modalOpen={this.state.modalOpen}

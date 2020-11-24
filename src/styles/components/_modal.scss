@@ -1,0 +1,23 @@
+.full-modal {
+	border-radius: 10px;
+}
+
+.modal-body {
+	background: $beige;
+	background: linear-gradient(
+		135deg,
+		rgba(220, 185, 156, 1) 0%,
+		rgba(240, 240, 240, 1) 99%
+	);
+	border: none;
+	// border-radius: 10px;
+	box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
+}
+
+.modal-title {
+	font-size: $l-size;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	border-bottom: none;
+}

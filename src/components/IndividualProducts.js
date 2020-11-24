@@ -24,31 +24,29 @@ const IndividualProducts = (props) => {
 	// 	this.setState(() => ({ modalOpen: false }));
 	// };
 	return (
-		<div className="">
-			<Card className="item-cards">
-				{/* <CardImg src={myPicture} /> */}
-				<CardBody>
-					<CardTitle>
-						{props.title}
-						<br />({props.type})
-					</CardTitle>
-					<CardSubtitle>${props.price}</CardSubtitle>
-					<CardText>
-						{props.size} - Up to {props.colors} colors
-					</CardText>
-					{/* <CardText>{props.details}</CardText> */}
-					{/* <Button>More Info</Button> */}
-				</CardBody>
-				{/* <Button className="order-button" onClick={props.onClick}>
+		<Card className="item-cards col-lg-3 m-4">
+			{/* <CardImg src={myPicture} /> */}
+			<CardBody>
+				<CardTitle>
+					{props.title}
+					<br />({props.type})
+				</CardTitle>
+				<CardSubtitle>${props.price}</CardSubtitle>
+				<CardText>
+					{props.size} - Up to {props.colors} colors
+				</CardText>
+				{/* <CardText>{props.details}</CardText> */}
+				{/* <Button>More Info</Button> */}
+			</CardBody>
+			{/* <Button className="order-button" onClick={props.onClick}>
 					Order
 				</Button> */}
-				{/* <PurchasePage
+			{/* <PurchasePage
 						onClick={this.openModal}
 						modalOpen={this.state.modalOpen}
 						handleClose={this.handleClose}
 					/> */}
-			</Card>
-		</div>
+		</Card>
 	);
 };
 

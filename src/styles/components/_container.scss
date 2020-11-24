@@ -1,5 +1,5 @@
 .container {
-	max-width: 80rem;
+	max-width: 100%;
 	// top-bottom first
 	// left-right second
 	margin: 0 auto;
@@ -7,11 +7,11 @@
 	padding: 0 $s-size;
 }
 
-// .page-background {
-// 	background: rgb(220, 185, 156);
-// 	background: linear-gradient(
-// 		90deg,
-// 		rgba(220, 185, 156, 1) 0%,
-// 		rgba(17, 33, 104, 1) 95%
-// 	);
-// }
+.page-background {
+	background: rgb(220, 185, 156);
+	background: linear-gradient(
+		45deg,
+		rgba(220, 185, 156, 1) 0%,
+		rgba(17, 33, 104, 1) 99%
+	);
+}

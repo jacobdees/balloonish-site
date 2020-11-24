@@ -5,6 +5,25 @@ html {
 body {
 	// font-family: Helvetica, Arial, sans-serif;
 	font-size: $m-size;
+	overflow: overlay;
+	overflow-x: hidden;
+	font-family: 'Quicksand', sans-serif;
+}
+
+body::-webkit-scrollbar-track {
+	background-color: #f5f5f500;
+	z-index: -1;
+}
+
+body::-webkit-scrollbar {
+	width: 10px;
+	background-color: transparent 100%;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: $beige;
+	border-radius: 5px;
+	border: none;
 }
 
 button {

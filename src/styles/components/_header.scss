@@ -1,6 +1,10 @@
 .header {
 	background: $beige;
+	background: linear-gradient(
+		135deg,
+		rgba(220, 185, 156, 1) 0%,
+		rgb(240, 240, 240) 99%
+	);
 	color: $dark-blue;
-	padding: 0 $m-size;
-	// height: $xl-size;
+	// padding: 0 $m-size;
 }

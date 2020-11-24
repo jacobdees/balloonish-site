@@ -90,13 +90,13 @@ export default class ExploreProducts extends React.Component {
 			},
 		];
 		return (
-			<div className="container">
+			<div className="container w-100">
 				<div className="">
 					<h2 className="col-12 text-center display-4">
 						What will you celebrate today?
 					</h2>
 					<div className="">
-						<div className="items-deck">
+						<div className="row border border-danger d-flex justify-content-around">
 							{menuItems.map((m) => (
 								<IndividualProducts
 									// className="row"
