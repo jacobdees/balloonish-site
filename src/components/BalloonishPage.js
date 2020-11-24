@@ -39,7 +39,7 @@ export default class BalloonishPage extends React.Component {
 					modalOpen={this.state.modalOpen}
 					handleClose={this.handleClose}
 				/>
-				<div className="container w-75">
+				<div className="container">
 					<PurchasePage
 						onClick={this.openModal}
 						modalOpen={this.state.modalOpen}

@@ -96,7 +96,7 @@ export default class ExploreProducts extends React.Component {
 						What will you celebrate today?
 					</h2>
 					<div className="">
-						<div className="row border border-danger d-flex justify-content-around">
+						<div className="row d-flex justify-content-around">
 							{menuItems.map((m) => (
 								<IndividualProducts
 									// className="row"
