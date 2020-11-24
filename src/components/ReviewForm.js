@@ -76,7 +76,7 @@ export default class ReviewForm extends React.Component {
 	render() {
 		// if (this.state.error === '') {
 		return (
-			<div>
+			<div className="container review-form">
 				{this.state.error === undefined ? (
 					<div className="row">
 						<h2
