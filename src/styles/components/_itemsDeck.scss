@@ -2,4 +2,11 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+	background: $off-white;
+	background: linear-gradient(
+		135deg,
+		$beige 0%,
+		$off-white 50%,
+		$dark-blue 100%
+	);
 }

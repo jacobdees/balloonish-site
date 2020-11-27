@@ -19,7 +19,7 @@ export default class ExploreProducts extends React.Component {
 		return (
 			<div className="container-fluid w-100">
 				<div className="">
-					<h2 className="col-12 text-center display-4">
+					<h2 className="col-12 text-center">
 						What will you celebrate today?
 					</h2>
 					<div className="container-fluid">

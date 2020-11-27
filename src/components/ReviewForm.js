@@ -76,15 +76,15 @@ export default class ReviewForm extends React.Component {
 	render() {
 		// if (this.state.error === '') {
 		return (
-			<div className="container review-form">
+			<div className="review-form">
 				{this.state.error === undefined ? (
-					<div className="row d-flex justify-content-center align-items-center h-100">
-						<h2 className="col-md-4 text-center display-4 order-md-12 h-sm-100 d-flex align-items-center justify-content-center">
+					<div className="row d-flex justify-content-center align-items-center h-100 py-auto">
+						<h2 className="review-form-title col-md-4 text-center order-md-12 d-flex align-items-center justify-content-center">
 							Leave a Review!
 						</h2>
 						<Form
 							onSubmit={this.onSubmit}
-							className="col-md-8 order-md-1"
+							className="col-md-4 order-md-1"
 						>
 							<Row form>
 								<Col md={6}>
