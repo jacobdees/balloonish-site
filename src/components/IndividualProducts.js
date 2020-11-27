@@ -26,7 +26,11 @@ const IndividualProducts = (props) => {
 	return (
 		<Card className="item-cards m-5 col-lg-3 col-10 w-100">
 			{/* <CardImg src={myPicture} /> */}
-			<CardBody className="row d-flex align-items-end">
+			{/* <CardImg top width="100%" src={props.img} alt="Card image cap" /> */}
+			<CardBody
+				className="row d-flex align-items-end item-card-images"
+				style={{ backgroundImage: `url(${props.img})` }}
+			>
 				<CardTitle className="item-card-title col-12 text-center">
 					{props.title} ({props.type})
 				</CardTitle>

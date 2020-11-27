@@ -5,6 +5,7 @@ export default {
 		{
 			id: 1,
 			item: 'Simple Garland',
+			img: '/images/simplegarland-outside.PNG',
 			type: 'Outdoor',
 			size: 'Garland (8ft)',
 			colors: 3,
@@ -14,6 +15,7 @@ export default {
 		{
 			id: 2,
 			item: 'Simple+ Garland',
+			img: '/images/simple+garland-inside.PNG',
 			type: 'Outdoor',
 			size: 'Garland (10ft)',
 			colors: 4,
@@ -23,6 +25,7 @@ export default {
 		{
 			id: 3,
 			item: 'Complex Garland',
+			img: '/images/complexgarland.png',
 			type: 'Outdoor',
 			size: 'Garland (12ft)',
 			colors: 5,
@@ -32,6 +35,7 @@ export default {
 		{
 			id: 4,
 			item: 'Simple Garland',
+			img: '/images/simplegarland-indoor.png',
 			type: 'Indoor',
 			size: 'Garland (8ft)',
 			colors: 3,
@@ -41,6 +45,7 @@ export default {
 		{
 			id: 5,
 			item: 'Simple+ Garland',
+			img: '/images/simple+garland-inside.PNG',
 			type: 'Indoor',
 			size: 'Garland (10ft)',
 			colors: 4,
@@ -50,6 +55,7 @@ export default {
 		{
 			id: 6,
 			item: 'Complex Garland',
+			img: '/images/complexgarland.png',
 			type: 'Indoor',
 			size: 'Garland (12ft)',
 			colors: 5,
@@ -59,6 +65,7 @@ export default {
 		{
 			id: 7,
 			item: 'Balloon Wall',
+			img: '/images/balloonwall-small.png',
 			type: 'Small',
 			size: 'Wall (8ft x 8ft)',
 			colors: 4,
@@ -68,6 +75,7 @@ export default {
 		{
 			id: 8,
 			item: 'Balloon Wall',
+			img: '/images/balloonwall-large.PNG',
 			type: 'Large',
 			size: 'Wall (10ft x 10ft)',
 			colors: 5,

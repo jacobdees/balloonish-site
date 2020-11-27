@@ -3,18 +3,28 @@
 	height: 500px;
 	// padding: $s-size;
 	// margin: $s-size;
-	box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.25);
+	box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.5);
 	// text-align: center;
 	background-color: $off-white;
 	border-radius: $s-size;
+	// background-image: url('/images/30th.png');
 	// align-items: center;
 	border: none;
+	background-position: center;
+	background-size: contain;
 	// display: flex;
 	// align-self: flex-end;
 }
 
 .item-card-title {
 	background-color: white;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+.item-card-images {
+	background-position: center;
+	background-size: cover;
 	border-radius: 5px;
 }
 

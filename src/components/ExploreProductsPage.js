@@ -31,6 +31,7 @@ export default class ExploreProducts extends React.Component {
 									// className="row"
 									key={m.id}
 									title={m.item}
+									img={m.img}
 									type={m.type}
 									size={m.size}
 									colors={m.colors}
