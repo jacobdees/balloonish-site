@@ -9,17 +9,17 @@ import {
 
 const items = [
 	{
-		src: '/images/baby.jpg',
+		src: '/images/baby.png',
 		altText: 'Slide 1',
 		caption: '',
 	},
 	{
-		src: '/images/30th.JPEG',
+		src: '/images/30th.png',
 		altText: 'Slide 2',
 		caption: '',
 	},
 	{
-		src: '/images/moms.JPG',
+		src: '/images/moms.png',
 		altText: 'Slide 3',
 		caption: '',
 	},
@@ -66,24 +66,26 @@ const Example = (props) => {
 	});
 
 	return (
-		<Carousel activeIndex={activeIndex} next={next} previous={previous}>
-			<CarouselIndicators
-				items={items}
-				activeIndex={activeIndex}
-				onClickHandler={goToIndex}
-			/>
-			{slides}
-			{/* <CarouselControl
-				direction="prev"
-				directionText="Previous"
-				onClickHandler={previous}
-			/>
-			<CarouselControl
-				direction="next"
-				directionText="Next"
-				onClickHandler={next}
-			/> */}
-		</Carousel>
+		<div className="carousel-page">
+			<Carousel activeIndex={activeIndex} next={next} previous={previous}>
+				<CarouselIndicators
+					items={items}
+					activeIndex={activeIndex}
+					onClickHandler={goToIndex}
+				/>
+				{slides}
+				{/* <CarouselControl
+					direction="prev"
+					directionText="Previous"
+					onClickHandler={previous}
+				/>
+				<CarouselControl
+					direction="next"
+					directionText="Next"
+					onClickHandler={next}
+				/> */}
+			</Carousel>
+		</div>
 	);
 };
 
