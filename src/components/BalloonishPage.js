@@ -13,6 +13,7 @@ export default class BalloonishPage extends React.Component {
 		super(props);
 		this.state = {
 			modalOpen: false,
+			scrollClass: '',
 		};
 	}
 	openModal = () => {
@@ -21,33 +22,34 @@ export default class BalloonishPage extends React.Component {
 	handleClose = () => {
 		this.setState(() => ({ modalOpen: false }));
 	};
+
 	render() {
 		return (
-			<div className="">
+			<div className="page-container">
+				<Carousel />
 				{this.state.modalOpen ? null : (
 					<Header
 						onClick={this.openModal}
 						modalOpen={this.state.modalOpen}
 						handleClose={this.handleClose}
-						className="animate__animated animate__bounceOutUp"
+						className=""
 					/>
 				)}
-				<Carousel />
 				<ReviewsPage />
 				<ExploreProductsPage
 					onClick={this.openModal}
 					modalOpen={this.state.modalOpen}
 					handleClose={this.handleClose}
 				/>
-				<div className="container">
+				<div className="">
 					<PurchasePage
 						onClick={this.openModal}
 						modalOpen={this.state.modalOpen}
 						handleClose={this.handleClose}
 					/>
-					<AboutPage />
-					<ReviewForm />
 				</div>
+				<AboutPage />
+				<ReviewForm />
 				<Footer />
 			</div>
 		);

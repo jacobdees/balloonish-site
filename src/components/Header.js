@@ -8,11 +8,11 @@ export default class Header extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className="clear-header"></div>
-				<div className="header fixed-top row">
-					<h1 className="col-8 mx-auto">balloon.ish</h1>
+				<div className="container"></div>
+				<div className="header fixed-top row d-flex justify-content-around">
+					<h1 className="col-sm-3 col-6 ml-sm-5">balloon.ish</h1>
 					<Button
-						className="my-auto mx-sm-auto mx-5 order-button"
+						className="my-auto mr-5 order-button"
 						onClick={this.props.onClick}
 					>
 						Order Now

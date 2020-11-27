@@ -8,13 +8,14 @@
 	font-family: 'Quicksand', sans-serif;
 }
 .cancel-button {
-	background: $off-black;
+	background: $off-white;
 	border: none;
 	border-radius: 5px;
 	font-size: $m-size;
 	vertical-align: end;
 	padding: $s-size;
 	font-family: 'Quicksand', sans-serif;
+	color: $dark-blue;
 }
 
 .dropdown-button {

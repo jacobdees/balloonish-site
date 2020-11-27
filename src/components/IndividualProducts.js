@@ -24,7 +24,7 @@ const IndividualProducts = (props) => {
 	// 	this.setState(() => ({ modalOpen: false }));
 	// };
 	return (
-		<Card className="item-cards m-5 col-md-3">
+		<Card className="item-cards m-5 col-lg-3 col-10 w-100">
 			{/* <CardImg src={myPicture} /> */}
 			<CardBody className="row d-flex align-items-end">
 				<CardTitle className="item-card-title col-12 text-center">

@@ -27,14 +27,14 @@ export default class Reviews extends React.Component {
 		const selectedReview =
 			reviews[Math.floor(Math.random() * reviews.length)];
 		return (
-			<div className="jumbotron jumbotron-fluid review-page">
+			<div className="jumbotron jumbotron-fluid">
 				{/* <h2 className="col-12 text-center display-4">
 					Hear what others have to say...
 				</h2> */}
 				<div className="row justify-content-center">
-					<h3 className="col-10 col-md-6 display-4 display-md-3 text-center">
+					<h2 className="col-10 col-md-6 review-page text-center">
 						"{selectedReview.text}"
-					</h3>
+					</h2>
 					{/* <div className="row justify-content-center">
 						<p className="lead justify-content-center">
 							- {selectedReview.author}
