@@ -16,7 +16,8 @@ export default class BalloonishPage extends React.Component {
 			scrollClass: '',
 		};
 	}
-	openModal = () => {
+	openModal = (e) => {
+		e.preventDefault();
 		this.setState(() => ({ modalOpen: true }));
 	};
 	handleClose = () => {

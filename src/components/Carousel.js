@@ -15,7 +15,7 @@ const items = [
 	},
 	{
 		src: '/images/30th.JPEG',
-		altText: '',
+		altText: 'Slide 2',
 		caption: '',
 	},
 	{
@@ -54,6 +54,7 @@ const Example = (props) => {
 				onExiting={() => setAnimating(true)}
 				onExited={() => setAnimating(false)}
 				key={item.src}
+				className="carousel-item"
 			>
 				<img src={item.src} alt={item.altText} />
 				<CarouselCaption

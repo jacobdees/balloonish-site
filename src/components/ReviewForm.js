@@ -78,11 +78,8 @@ export default class ReviewForm extends React.Component {
 		return (
 			<div className="container review-form">
 				{this.state.error === undefined ? (
-					<div className="row">
-						<h2
-							className="col-md-4 text-center display-4 my-auto order-md-12 pb-md-3 pb-5"
-							style={{ height: '100%' }}
-						>
+					<div className="row d-flex justify-content-center align-items-center h-100">
+						<h2 className="col-md-4 text-center display-4 order-md-12 h-sm-100 d-flex align-items-center justify-content-center">
 							Leave a Review!
 						</h2>
 						<Form
@@ -152,7 +149,7 @@ export default class ReviewForm extends React.Component {
 														this.onRatingChange
 													}
 													size="large"
-													// precision={0.5}
+													precision={0.5}
 												/>
 											</Box>
 										</div>
