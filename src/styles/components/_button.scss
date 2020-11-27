@@ -2,8 +2,32 @@
 	background: $dark-blue;
 	border: none;
 	border-radius: 5px;
-	font-size: $s-size;
+	font-size: $m-size;
 	vertical-align: end;
 	padding: $s-size;
 	font-family: 'Quicksand', sans-serif;
+}
+.cancel-button {
+	background: $off-black;
+	border: none;
+	border-radius: 5px;
+	font-size: $m-size;
+	vertical-align: end;
+	padding: $s-size;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.dropdown-button {
+	font-family: 'Quicksand', sans-serif;
+	font-size: $m-size;
+	height: $l-size;
+	// padding-left: $s-size;
+	border: 0.5px solid $off-black;
+	border-radius: 5px;
+	background-color: white;
+	color: $off-white;
+}
+
+.dropdown-button:hover {
+	background-color: $dark-blue;
 }

@@ -5,4 +5,37 @@
 	padding-left: $s-size;
 	border: 0.5px solid $off-black;
 	border-radius: 5px;
+	color: $off-white;
+}
+
+.dropdown-box {
+	font-family: 'Quicksand', sans-serif;
+	font-size: $s-size;
+	// height: $l-size;
+	// padding-left: $s-size;
+	// border: 0.5px solid $off-black;
+	// border-radius: 5px;
+}
+
+.dropdown-box:hover {
+	background-color: $dark-blue;
+}
+
+.date-form-box {
+	font-family: 'Quicksand', sans-serif;
+	font-size: $m-size;
+	height: $l-size;
+	width: 150px;
+	// padding-left: $s-size;
+	border: 0.5px solid $off-black;
+	border-radius: 5px;
+	color: $off-white;
+}
+
+.date-form-box:hover {
+	background-color: $dark-blue;
+	color: white;
+	::placeholder {
+		color: white;
+	}
 }

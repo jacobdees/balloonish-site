@@ -8,10 +8,14 @@ import {
 	Label,
 	Input,
 	Dropdown,
+	DropdownItem,
+	DropdownToggle,
+	DropdownMenu,
 	Modal,
 	ModalHeader,
 } from 'reactstrap';
 import DatePicker from 'react-datepicker';
+import MenuItems from './MenuItems';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-phone-number-input/style.css';
 import PhoneInput, { normalize } from 'react-phone-input-auto-format';
@@ -27,6 +31,7 @@ export default class PurchasePage extends React.Component {
 			tel: props.tel,
 			email: props.email,
 			pref: props.pref,
+			dropdown: false,
 			item: props.item,
 			date: props.date,
 			calendarFocused: false,
@@ -60,6 +65,11 @@ export default class PurchasePage extends React.Component {
 		this.setState(() => ({ pref }));
 	};
 
+	onDropdownChange = (e) => {
+		const dropdown = e.target.value;
+		this.setState(() => ({ dropdown: !this.state.dropdown }));
+	};
+
 	onItemChange = (e) => {
 		const item = e.target.value;
 		this.setState(() => ({ item }));
@@ -81,7 +91,7 @@ export default class PurchasePage extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-
+		alert('SUBMITTED');
 		this.props.handleClose();
 	};
 
@@ -103,19 +113,17 @@ export default class PurchasePage extends React.Component {
 					centered
 					size="md"
 				>
-					<div className="modal-body">
+					<div className="modal-body row d-flex justify-content-center">
 						<ModalHeader
-							toggle={this.props.handleClose}
-							charCode="&times;"
+							// toggle={this.props.handleClose}
+							// charCode="&times;"
 							className="modal-title"
-							style={{
-								borderBottom: 'none',
-								textAlign: 'center',
-							}}
-						></ModalHeader>
-						<h1 className="col-12 text-center">
+						>
 							Purchase Information
-						</h1>
+						</ModalHeader>
+						{/* <h1 className="col-12 text-center">
+							Purchase Information
+						</h1> */}
 						<Form onSubmit={this.onSubmit}>
 							<Row>
 								<Col xs={9} className="mx-auto my-2">
@@ -217,31 +225,40 @@ export default class PurchasePage extends React.Component {
 									</FormGroup>
 								</Col>
 							</Row>
-							{/* <Row> */}
-							{/* <Col xs={9} className="mx-auto my-2 text-center"> */}
-							{/* <FormGroup> */}
-							{/* ADD DROPDOWN BUTTON HERE */}
-							{/* <label htmlFor="item">
-												Choose an Item:{' '}
-											</label>
-											<Dropdown
-												id="item"
-												required
-												value={this.state.item}
-												onChange={this.onItemChange}
-												placeholder="Choose an Item"
-											>
-												<option value="item1">Item #1</option>
-												<option value="item2">Item #2</option>
-												<option value="item3">Item #3</option>
-											</Dropdown> */}
-							{/* </FormGroup> */}
-							{/* </Col> */}
-							{/* </Row> */}
-							<Row>
+							<Row className="d-flex justify-content-center align-items-center mx-auto">
 								<Col
-									xs={9}
-									className="mx-auto my-2 text-center"
+									xs={6}
+									className="mx-auto my-2 text-center d-flex justify-content-center my-auto"
+								>
+									<FormGroup className="">
+										{/* ADD DROPDOWN BUTTON HERE */}
+										<Dropdown
+											isOpen={this.state.dropdown}
+											toggle={this.onDropdownChange}
+										>
+											<DropdownToggle
+												className="dropdown-button text-center"
+												style={{ width: '150px' }}
+											>
+												Choose an Item
+											</DropdownToggle>
+											<DropdownMenu className="dropdown-box">
+												{MenuItems.MenuItems.map(
+													(m) => (
+														<DropdownItem
+															key={m.id}
+														>
+															{m.item}
+														</DropdownItem>
+													)
+												)}
+											</DropdownMenu>
+										</Dropdown>
+									</FormGroup>
+								</Col>
+								<Col
+									xs={6}
+									className="my-auto d-flex justify-content-center"
 								>
 									<FormGroup>
 										<DatePicker
@@ -250,7 +267,7 @@ export default class PurchasePage extends React.Component {
 												this.onDateChange(date)
 											}
 											placeholderText="Choose a Date"
-											className=" form-box"
+											className="date-form-box text-center"
 										/>
 									</FormGroup>
 								</Col>
@@ -274,10 +291,16 @@ export default class PurchasePage extends React.Component {
 							</Row>
 							<Row>
 								<Col
-									md={8}
+									md={12}
 									className="mx-auto my-2 text-center"
 								>
-									<Button className="order-button col-12 col-md-8">
+									<Button
+										className="cancel-button col-6 col-md-4 mx-2"
+										onClick={this.props.handleClose}
+									>
+										Cancel
+									</Button>
+									<Button className="order-button col-6 col-md-4 mx-2">
 										Submit
 									</Button>
 								</Col>
