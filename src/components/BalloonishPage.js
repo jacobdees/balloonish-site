@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import Banner from './Banner';
 import Carousel from './Carousel';
 import PurchasePage from './PurchasePage';
 import AboutPage from './AboutPage';
@@ -27,7 +28,8 @@ export default class BalloonishPage extends React.Component {
 	render() {
 		return (
 			<div className="page-container">
-				<Carousel />
+				{/* <Carousel /> */}
+				<Banner />
 				{this.state.modalOpen ? null : (
 					<Header
 						onClick={this.openModal}
