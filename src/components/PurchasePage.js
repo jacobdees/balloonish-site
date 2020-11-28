@@ -26,6 +26,7 @@ export default class PurchasePage extends React.Component {
 
 		this.state = {
 			error: undefined,
+			formSubmitted: false,
 			fName: props.fName,
 			lName: props.lName,
 			tel: props.tel,
@@ -91,8 +92,23 @@ export default class PurchasePage extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		alert('SUBMITTED');
-		this.props.handleClose();
+		if (
+			this.state.fName &&
+			this.state.lName &&
+			((this.state.pref === 'tel' && this.state.tel) ||
+				(this.state.pref === 'email' && this.state.email) ||
+				(this.state.pref === both &&
+					this.state.tel &&
+					this.state.email)) &&
+			this.state.item &&
+			this.state.date
+		) {
+			alert('SUBMITTED');
+			this.props.handleClose();
+			this.setState(() => ({ error: false }));
+		} else {
+			this.setState(() => ({ error: true }));
+		}
 	};
 
 	render() {
@@ -135,7 +151,13 @@ export default class PurchasePage extends React.Component {
 											placeholder="First Name"
 											value={this.state.fName}
 											onChange={this.onfNameChange}
-											className=" form-box"
+											className="form-box"
+											invalid={
+												this.state.error &&
+												!this.state.fName
+													? true
+													: false
+											}
 										/>
 									</FormGroup>
 								</Col>
@@ -150,6 +172,12 @@ export default class PurchasePage extends React.Component {
 											value={this.state.lName}
 											onChange={this.onlNameChange}
 											className=" form-box"
+											invalid={
+												this.state.error &&
+												!this.state.lName
+													? true
+													: false
+											}
 										/>
 									</FormGroup>
 								</Col>
@@ -164,6 +192,12 @@ export default class PurchasePage extends React.Component {
 											value={this.state.tel}
 											onChange={this.onTelChange}
 											className="col-md-12 form-box"
+											invalid={
+												this.state.error &&
+												!this.state.tel
+													? true
+													: false
+											}
 										/>
 									</FormGroup>
 								</Col>
@@ -176,7 +210,13 @@ export default class PurchasePage extends React.Component {
 											placeholder="Email"
 											value={this.state.email}
 											onChange={this.onEmailChange}
-											className=" form-box"
+											className="form-box"
+											invalid={
+												this.state.error &&
+												!this.state.email
+													? true
+													: false
+											}
 										/>
 									</FormGroup>
 								</Col>
@@ -186,7 +226,16 @@ export default class PurchasePage extends React.Component {
 									md={8}
 									className="mx-auto my-2 text-center"
 								>
-									<FormGroup tag="fieldset" check inline>
+									<FormGroup
+										tag="fieldset"
+										check
+										inline
+										invalid={
+											this.state.error && !this.state.pref
+												? true
+												: false
+										}
+									>
 										<FormGroup check inline>
 											<Label check>
 												Contact Preference{' '}
@@ -197,6 +246,8 @@ export default class PurchasePage extends React.Component {
 												<Input
 													type="radio"
 													name="radio2"
+													value="tel"
+													onChange={this.onPrefChange}
 													className=""
 												/>{' '}
 												Phone
@@ -207,6 +258,8 @@ export default class PurchasePage extends React.Component {
 												<Input
 													type="radio"
 													name="radio2"
+													value="email"
+													onChange={this.onPrefChange}
 													className=""
 												/>{' '}
 												Email
@@ -217,6 +270,8 @@ export default class PurchasePage extends React.Component {
 												<Input
 													type="radio"
 													name="radio2"
+													value="both"
+													onChange={this.onPrefChange}
 													className=""
 												/>{' '}
 												Both
@@ -231,31 +286,33 @@ export default class PurchasePage extends React.Component {
 									className="mx-auto my-2 text-center d-flex justify-content-center my-auto"
 								>
 									<FormGroup className="">
-										{/* ADD DROPDOWN BUTTON HERE */}
-										<Dropdown
-											isOpen={this.state.dropdown}
-											toggle={this.onDropdownChange}
+										<select
+											onChange={this.onItemChange}
+											className="form-box"
+											placeholder="Choose an Item"
 										>
-											<DropdownToggle
-												className="dropdown-button text-center"
-												style={{ width: '150px' }}
+											<option
+												value=""
+												disabled
+												selected
+												style={{ color: '$off-white' }}
 											>
 												Choose an Item
-											</DropdownToggle>
-											<DropdownMenu className="dropdown-box">
-												{MenuItems.MenuItems.map(
-													(m) => (
-														<DropdownItem
-															key={m.id}
-														>
-															{m.item}
-														</DropdownItem>
-													)
-												)}
-											</DropdownMenu>
-										</Dropdown>
+											</option>
+											{MenuItems.MenuItems.map((m) => (
+												<option
+													key={m.id}
+													value={this.state.item}
+													className="dropdown-options"
+												>
+													{m.item} ({m.type})
+												</option>
+											))}
+										</select>
 									</FormGroup>
 								</Col>
+							</Row>
+							<Row className="d-flex justify-content-center align-items-center mx-auto">
 								<Col
 									xs={6}
 									className="my-auto d-flex justify-content-center"
@@ -267,6 +324,7 @@ export default class PurchasePage extends React.Component {
 												this.onDateChange(date)
 											}
 											placeholderText="Choose a Date"
+											style={{ placeholder: 'white' }}
 											className="date-form-box text-center"
 										/>
 									</FormGroup>
@@ -295,12 +353,12 @@ export default class PurchasePage extends React.Component {
 									className="mx-auto my-2 text-center"
 								>
 									<Button
-										className="cancel-button col-6 col-md-4 mx-2"
+										className="cancel-button col-6 col-md-4 m-2"
 										onClick={this.props.handleClose}
 									>
 										Cancel
 									</Button>
-									<Button className="order-button col-6 col-md-4 mx-2">
+									<Button className="order-button col-6 col-md-4 m-2">
 										Submit
 									</Button>
 								</Col>

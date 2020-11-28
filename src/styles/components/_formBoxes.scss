@@ -5,21 +5,16 @@
 	padding-left: $s-size;
 	border: 0.5px solid $off-black;
 	border-radius: 5px;
+	color: $off-black;
+}
+
+.form-box::placeholder {
 	color: $off-white;
 }
 
-.dropdown-box {
-	font-family: 'Quicksand', sans-serif;
-	font-size: $s-size;
-	// height: $l-size;
-	// padding-left: $s-size;
-	// border: 0.5px solid $off-black;
-	// border-radius: 5px;
-}
-
-.dropdown-box:hover {
-	background-color: $dark-blue;
-}
+// .dropdown-options {
+// 	font-size: $s-size;
+// }
 
 .date-form-box {
 	font-family: 'Quicksand', sans-serif;
@@ -29,13 +24,18 @@
 	// padding-left: $s-size;
 	border: 0.5px solid $off-black;
 	border-radius: 5px;
+	color: $off-black;
+}
+
+.date-form-box::placeholder {
 	color: $off-white;
 }
 
-.date-form-box:hover {
-	background-color: $dark-blue;
+// .date-form-box:hover {
+// 	background-color: $dark-blue;
+// 	color: white;
+// }
+
+.date-form-box:hover::placeholder {
 	color: white;
-	::placeholder {
-		color: white;
-	}
 }

@@ -86,9 +86,9 @@ export default class ReviewForm extends React.Component {
 							onSubmit={this.onSubmit}
 							className="col-md-4 order-md-1"
 						>
-							<Row form>
-								<Col md={6}>
-									<FormGroup>
+							<Row form className="d-flex justify-content-center">
+								<Col md={5} xs={8}>
+									<FormGroup className="">
 										<Input
 											type="text"
 											id="fName"
@@ -99,7 +99,7 @@ export default class ReviewForm extends React.Component {
 										></Input>
 									</FormGroup>
 								</Col>
-								<Col md={6}>
+								<Col md={5} xs={8}>
 									<FormGroup>
 										<Input
 											type="text"
@@ -112,16 +112,20 @@ export default class ReviewForm extends React.Component {
 									</FormGroup>
 								</Col>
 							</Row>
-							<FormGroup>
-								<Input
-									type="email"
-									placeholder="Email"
-									value={this.state.email}
-									onChange={this.onEmailChange}
-									className="form-box"
-								></Input>
-							</FormGroup>
-							<Row form>
+							<Row form className="d-flex justify-content-center">
+								<Col md={10} xs={8}>
+									<FormGroup>
+										<Input
+											type="email"
+											placeholder="Email"
+											value={this.state.email}
+											onChange={this.onEmailChange}
+											className="form-box"
+										></Input>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row form className="d-flex justify-content-center">
 								<Col md={3}>
 									<FormGroup className="text-center">
 										<Label
@@ -155,7 +159,7 @@ export default class ReviewForm extends React.Component {
 										</div>
 									</FormGroup>
 								</Col>
-								<Col md={9}>
+								<Col md={7} xs={8}>
 									<FormGroup>
 										{/* <Label htmlFor="review">
 											Comments:
@@ -182,7 +186,7 @@ export default class ReviewForm extends React.Component {
 								/>
 							</FormGroup> */}
 							<div className="d-flex justify-content-center">
-								<Button className="order-button col-12 col-lg-8">
+								<Button className="order-button col-8 col-lg-10">
 									Submit
 								</Button>
 							</div>

@@ -10,19 +10,6 @@ import {
 } from 'reactstrap';
 
 const IndividualProducts = (props) => {
-	// export default class IndividualProducts extends React.Component {
-	// constructor(props) {
-	// 	super(props);
-	// 	this.state = {
-	// 		modalOpen: false,
-	// 	};
-	// }
-	// openModal = () => {
-	// 	this.setState(() => ({ modalOpen: true }));
-	// };
-	// handleClose = () => {
-	// 	this.setState(() => ({ modalOpen: false }));
-	// };
 	return (
 		<Card className="item-cards m-5 col-lg-3 col-10 w-100">
 			{/* <CardImg src={myPicture} /> */}

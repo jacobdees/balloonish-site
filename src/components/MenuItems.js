@@ -74,7 +74,7 @@ export default {
 		},
 		{
 			id: 8,
-			item: 'Balloon Wall',
+			item: 'Balloon Wall (Large)',
 			img: '/images/balloonwall-large.PNG',
 			type: 'Large',
 			size: 'Wall (10ft x 10ft)',

@@ -51,7 +51,7 @@ export default class BalloonishPage extends React.Component {
 				</div>
 				<AboutPage />
 				<ReviewForm />
-				<Footer />
+				{/* <Footer /> */}
 			</div>
 		);
 	}
