@@ -8,6 +8,7 @@ import {
 	CardSubtitle,
 	Button,
 } from 'reactstrap';
+import PurchasePage from '../components/PurchasePage';
 
 const IndividualProducts = (props) => {
 	return (
@@ -21,11 +22,18 @@ const IndividualProducts = (props) => {
 				<CardTitle className="item-card-title col-12 text-center">
 					{props.title} ({props.type})
 				</CardTitle>
-				{/* <CardSubtitle>${props.price}</CardSubtitle> */}
-				{/* <CardText className="col-12">
-					{props.size} - Up to {props.colors} colors
-				</CardText> */}
-				{/* <CardText>{props.details}</CardText> */}
+				{/* <CardSubtitle>${props.price}</CardSubtitle>
+				<CardText className="col-12">{props.size}</CardText>
+				<CardText className="col-12">
+					Up to {props.colors} colors
+				</CardText>
+				<CardText className="card-details">{props.details}</CardText> */}
+				{/* <Button
+						className="my-auto mr-5 order-button"
+						onClick={this.props.onClick}
+					>
+						Order Now
+					</Button> */}
 				{/* <Button>More Info</Button> */}
 			</CardBody>
 			{/* <Button className="order-button" onClick={props.onClick}>

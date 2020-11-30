@@ -17,7 +17,7 @@ export default class ExploreProducts extends React.Component {
 	};
 	render() {
 		return (
-			<div className="container-fluid w-100">
+			<div className="container-fluid w-100 items-deck">
 				<div className="">
 					<h2 className="col-12 text-center item-deck-title">
 						What will you celebrate today?
@@ -42,6 +42,9 @@ export default class ExploreProducts extends React.Component {
 									handleClose={this.handleClose}
 								/>
 							))}
+							<div className="overlay">
+								<div className="text">testing</div>
+							</div>
 						</div>
 					</div>
 				</div>

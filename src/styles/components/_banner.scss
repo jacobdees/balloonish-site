@@ -1,9 +1,15 @@
-.banner-img {
+.banner-img1 {
 	display: flex;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 10rem;
-	margin-bottom: 10rem;
+	margin-top: 12vh;
+	margin-bottom: none;
+	background-image: url('/images/banner-img.png');
+	background-position: center 12vh;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-clip: content-box;
 	width: auto;
-	height: 75vh;
+	height: 88vh;
+	// border: 10px solid $beige;
 }

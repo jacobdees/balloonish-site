@@ -27,7 +27,11 @@
 .item-card-images {
 	background-position: center;
 	background-size: cover;
-	border-radius: 5px;
+	border-radius: 10px;
+}
+
+.card-details {
+	font-size: $s-size;
 }
 
 // .item-cards-subtitle {

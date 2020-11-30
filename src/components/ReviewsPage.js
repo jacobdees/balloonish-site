@@ -35,12 +35,12 @@ export default class Reviews extends React.Component {
 	}
 	render() {
 		return (
-			<div className="jumbotron jumbotron-fluid">
+			<div className="review-page container">
 				{/* <h2 className="col-12 text-center display-4">
 					Hear what others have to say...
 				</h2> */}
-				<div className="row justify-content-center">
-					<h2 className="col-10 col-md-6 review-page text-center">
+				<div className="row d-flex justify-content-center align-items-center h-100">
+					<h2 className="col-10 col-md-6 review-text text-center">
 						"{this.state.selectedReview}"
 					</h2>
 					{/* <div className="row justify-content-center">

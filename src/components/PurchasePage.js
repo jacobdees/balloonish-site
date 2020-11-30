@@ -7,10 +7,6 @@ import {
 	FormGroup,
 	Label,
 	Input,
-	Dropdown,
-	DropdownItem,
-	DropdownToggle,
-	DropdownMenu,
 	Modal,
 	ModalHeader,
 } from 'reactstrap';
