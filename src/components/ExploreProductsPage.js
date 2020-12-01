@@ -1,15 +1,17 @@
 import React from 'react';
 import IndividualProducts from './IndividualProducts';
 import MenuItems from './MenuItems';
+import ProductPortal from './ProductPortal';
 
 export default class ExploreProducts extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			modalOpen: false,
+			selectedModal: null,
 		};
 	}
-	openModal = () => {
+	openModal = (id) => {
 		this.setState(() => ({ modalOpen: true }));
 	};
 	handleClose = () => {
@@ -38,13 +40,20 @@ export default class ExploreProducts extends React.Component {
 									price={m.price}
 									details={m.details}
 									onClick={this.openModal}
-									modalOpen={this.state.modalOpen}
-									handleClose={this.handleClose}
+									selectedModal={() =>
+										this.setState(() => ({
+											selectedModal: m.id,
+										}))
+									}
 								/>
 							))}
-							<div className="overlay">
-								<div className="text">testing</div>
-							</div>
+							{this.state.modalOpen ? (
+								<ProductPortal
+									modalOpen={this.state.modalOpen}
+									handleClose={this.handleClose}
+									selectedModal={this.state.selectedModal}
+								/>
+							) : null}
 						</div>
 					</div>
 				</div>

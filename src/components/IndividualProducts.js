@@ -8,6 +8,7 @@ import {
 	CardSubtitle,
 	Button,
 } from 'reactstrap';
+import ProductPortal from './ProductPortal';
 import PurchasePage from '../components/PurchasePage';
 
 const IndividualProducts = (props) => {
@@ -36,9 +37,13 @@ const IndividualProducts = (props) => {
 					</Button> */}
 				{/* <Button>More Info</Button> */}
 			</CardBody>
-			{/* <Button className="order-button" onClick={props.onClick}>
-					Order
-				</Button> */}
+			<Button
+				className="order-button"
+				onClick={props.onClick}
+				selectedModal={props.id}
+			>
+				Order
+			</Button>
 			{/* <PurchasePage
 						onClick={this.openModal}
 						modalOpen={this.state.modalOpen}

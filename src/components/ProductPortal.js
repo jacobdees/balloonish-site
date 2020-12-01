@@ -1,32 +1,55 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import MenuItems from './MenuItems';
 
 export default class ProductPortal extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			modalOpen: props.modalOpen,
+			selectedModal: 3,
+		};
+	}
 	render() {
 		return (
 			<div>
-				<Modal isOpen={modal} toggle={toggle} className={className}>
-					<ModalHeader toggle={toggle}>Modal title</ModalHeader>
-					<ModalBody>
-						Lorem ipsum dolor sit amet, consectetur adipisicing
-						elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua. Ut enim ad minim veniam, quis
-						nostrud exercitation ullamco laboris nisi ut aliquip ex
-						ea commodo consequat. Duis aute irure dolor in
-						reprehenderit in voluptate velit esse cillum dolore eu
-						fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit
-						anim id est laborum.
-					</ModalBody>
-					<ModalFooter>
-						<Button color="primary" onClick={toggle}>
-							Do Something
-						</Button>{' '}
-						<Button color="secondary" onClick={toggle}>
-							Cancel
-						</Button>
-					</ModalFooter>
-				</Modal>
+				<div>
+					{MenuItems.MenuItems.filter(
+						(item) => item.id == this.state.selectedModal
+					).map((filteredItem) => (
+						<Modal
+							isOpen={this.state.modalOpen}
+							toggle={this.props.handleClose}
+							key={filteredItem.id}
+						>
+							<ModalHeader toggle={this.props.handleClose}>
+								{filteredItem.item}
+							</ModalHeader>
+							<ModalBody>
+								{filteredItem.img}
+								{filteredItem.type}
+								{filteredItem.size}
+								{filteredItem.colors}
+								{filteredItem.price}
+								{filteredItem.details}
+							</ModalBody>
+							<ModalFooter>
+								<Button
+									color="primary"
+									onClick={this.props.handleClose}
+								>
+									Order
+								</Button>{' '}
+								<Button
+									color="secondary"
+									onClick={this.props.handleClose}
+								>
+									Go Back
+								</Button>
+							</ModalFooter>
+						</Modal>
+					))}
+				</div>
 			</div>
 		);
 	}

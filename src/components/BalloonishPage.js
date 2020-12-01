@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Banner from './Banner';
 import Carousel from './Carousel';
+import ProductPortal from './ProductPortal';
 import PurchasePage from './PurchasePage';
 import AboutPage from './AboutPage';
 import ReviewForm from './ReviewForm';
@@ -39,11 +40,7 @@ export default class BalloonishPage extends React.Component {
 					/>
 				)}
 				<ReviewsPage />
-				<ExploreProductsPage
-					onClick={this.openModal}
-					modalOpen={this.state.modalOpen}
-					handleClose={this.handleClose}
-				/>
+				<ExploreProductsPage />
 				<div className="">
 					<PurchasePage
 						onClick={this.openModal}

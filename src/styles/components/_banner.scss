@@ -1,17 +1,22 @@
 .banner-img1 {
-	display: flex;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 12vh;
+	// margin-top: 12vh;
 	margin-bottom: none;
-	background-image: url('/images/banner-img.png');
-	background-position: center 12vh;
+	background-image: url('/images/baby-blurred.png');
+	// background-position: center 12vh;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	// background-clip: content-box;
 	background-size: cover;
 	scroll-behavior: unset;
-	// width: auto;
-	height: 88vh;
+	width: auto;
+	height: 100vh;
 	// border: 10px solid $beige;
+	// position: absolute;
+}
+
+.banner-logo {
+	margin-top: 12vh;
+	height: 88vh;
+	width: auto;
+	perspective: 1px;
 }
