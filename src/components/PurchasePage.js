@@ -110,9 +110,9 @@ export default class PurchasePage extends React.Component {
 	render() {
 		return (
 			<div>
-				<div className="d-flex justify-content-center">
+				<div className="d-flex justify-content-center purchase-button">
 					<Button
-						className="order-button col-lg-6 col-12 py-4 my-5"
+						className="order-button col-lg-5 col-10 py-4 my-5"
 						onClick={this.props.onClick}
 					>
 						Order Now

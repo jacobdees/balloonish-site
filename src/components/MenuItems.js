@@ -15,7 +15,7 @@ export default {
 		{
 			id: 2,
 			item: 'Simple+ Garland',
-			img: '/images/simple+garland-inside.PNG',
+			img: '/images/simple+garlandoutdoor.HEIC',
 			type: 'Outdoor',
 			size: 'Garland (10ft)',
 			colors: 4,
@@ -25,7 +25,7 @@ export default {
 		{
 			id: 3,
 			item: 'Complex Garland',
-			img: '/images/complexgarland.png',
+			img: '/images/complexgarland-outdoor.HEIC',
 			type: 'Outdoor',
 			size: 'Garland (12ft)',
 			colors: 5,

@@ -35,7 +35,7 @@ export default class Reviews extends React.Component {
 	}
 	render() {
 		return (
-			<div className="review-page container">
+			<div className="review-page container-fluid">
 				{/* <h2 className="col-12 text-center display-4">
 					Hear what others have to say...
 				</h2> */}

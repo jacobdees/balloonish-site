@@ -8,8 +8,10 @@
 	background-position: center 12vh;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-clip: content-box;
-	width: auto;
+	// background-clip: content-box;
+	background-size: cover;
+	scroll-behavior: unset;
+	// width: auto;
 	height: 88vh;
 	// border: 10px solid $beige;
 }

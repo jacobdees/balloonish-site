@@ -1,9 +1,15 @@
 .review-page {
-	// background-color: $beige;
+	background-color: $beige;
 	margin-top: none;
 	// padding: $xl-size;
 	height: 50vh;
 	background-attachment: fixed;
+	// scroll-snap-align: start;
+	background: linear-gradient(
+		180deg,
+		rgba(220, 185, 156, 1) 0%,
+		rgb(255, 255, 255) 99%
+	);
 }
 
 .review-text {
