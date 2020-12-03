@@ -13,6 +13,7 @@ import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SimpleRating from './SimpleRating';
+import { Fade, Zoom } from 'react-reveal';
 
 export default class ReviewForm extends React.Component {
 	constructor(props) {
@@ -80,7 +81,7 @@ export default class ReviewForm extends React.Component {
 				{this.state.error === undefined ? (
 					<div className="row d-flex justify-content-center align-items-center h-100 py-auto">
 						<h2 className="review-form-title col-md-4 text-center order-md-12 d-flex align-items-center justify-content-center">
-							Leave a Review!
+							<Zoom right>Leave a Review!</Zoom>
 						</h2>
 						<Form
 							onSubmit={this.onSubmit}

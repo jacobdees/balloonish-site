@@ -1,4 +1,5 @@
 import React from 'react';
+import { Slide } from 'react-reveal';
 
 const reviews = [
 	{
@@ -39,17 +40,19 @@ export default class Reviews extends React.Component {
 				{/* <h2 className="col-12 text-center display-4">
 					Hear what others have to say...
 				</h2> */}
+				{/* <Slide bottom cascade> */}
 				<div className="row d-flex justify-content-center align-items-center h-100">
 					<h2 className="col-10 col-md-6 review-text text-center">
 						"{this.state.selectedReview}"
 					</h2>
 					{/* <div className="row justify-content-center">
-						<p className="lead justify-content-center">
-							- {selectedReview.author}
-						</p>
-					</div> */}
+							<p className="lead justify-content-center">
+								- {selectedReview.author}
+							</p>
+						</div> */}
 					{/* insert image here */}
 				</div>
+				{/* </Slide> */}
 			</div>
 		);
 	}

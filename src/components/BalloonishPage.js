@@ -9,6 +9,7 @@ import ReviewForm from './ReviewForm';
 import ReviewsPage from './ReviewsPage';
 import ExploreProductsPage from './ExploreProductsPage';
 import Footer from './Footer';
+import Zoom from 'react-reveal/Zoom';
 
 export default class BalloonishPage extends React.Component {
 	constructor(props) {

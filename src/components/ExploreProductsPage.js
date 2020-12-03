@@ -2,6 +2,7 @@ import React from 'react';
 import IndividualProducts from './IndividualProducts';
 import MenuItems from './MenuItems';
 import ProductPortal from './ProductPortal';
+import { Fade, Slide, Bounce, Flip } from 'react-reveal';
 
 export default class ExploreProducts extends React.Component {
 	constructor(props) {
@@ -25,9 +26,11 @@ export default class ExploreProducts extends React.Component {
 		return (
 			<div className="container-fluid w-100 items-deck">
 				<div className="">
-					<h2 className="col-12 text-center item-deck-title">
-						What will you celebrate today?
-					</h2>
+					<Bounce bottom>
+						<h2 className="col-12 text-center item-deck-title">
+							What will you celebrate today?
+						</h2>
+					</Bounce>
 					<div className="container-fluid">
 						<div className="row d-flex justify-content-around">
 							{/* {console.log(MenuItems.MenuItems)} */}
