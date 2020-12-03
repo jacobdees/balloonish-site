@@ -13,7 +13,11 @@ import PurchasePage from '../components/PurchasePage';
 
 const IndividualProducts = (props) => {
 	return (
-		<Card className="item-cards m-5 col-lg-3 col-10 w-100">
+		<Card
+			className="item-cards m-5 col-lg-3 col-10 w-100"
+			onClick={props.onClick}
+			selectedModal={props.id}
+		>
 			{/* <CardImg src={myPicture} /> */}
 			{/* <CardImg top width="100%" src={props.img} alt="Card image cap" /> */}
 			<CardBody
@@ -37,13 +41,13 @@ const IndividualProducts = (props) => {
 					</Button> */}
 				{/* <Button>More Info</Button> */}
 			</CardBody>
-			<Button
+			{/* <Button
 				className="order-button"
 				onClick={props.onClick}
 				selectedModal={props.id}
 			>
 				Order
-			</Button>
+			</Button> */}
 			{/* <PurchasePage
 						onClick={this.openModal}
 						modalOpen={this.state.modalOpen}

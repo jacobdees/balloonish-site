@@ -16,6 +16,7 @@ export default class BalloonishPage extends React.Component {
 		this.state = {
 			modalOpen: false,
 			scrollClass: '',
+			item: props.item,
 		};
 	}
 	openModal = (e) => {
@@ -31,16 +32,18 @@ export default class BalloonishPage extends React.Component {
 			<div className="page-container">
 				{/* <Carousel /> */}
 				<Banner />
-				{this.state.modalOpen ? null : (
-					<Header
-						onClick={this.openModal}
-						modalOpen={this.state.modalOpen}
-						handleClose={this.handleClose}
-						className=""
-					/>
-				)}
+				<Header
+					onClick={this.openModal}
+					modalOpen={this.state.modalOpen}
+					handleClose={this.handleClose}
+					className=""
+				/>
 				<ReviewsPage />
-				<ExploreProductsPage />
+				<ExploreProductsPage
+					onClick={this.openModal}
+					modalOpen={this.state.modalOpen}
+					handleClose={this.handleClose}
+				/>
 				<div className="">
 					<PurchasePage
 						onClick={this.openModal}

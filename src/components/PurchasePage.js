@@ -121,11 +121,11 @@ export default class PurchasePage extends React.Component {
 				<Modal
 					isOpen={this.props.modalOpen}
 					toggle={this.props.handleClose}
-					className="full-modal"
+					className=""
 					centered
 					size="md"
 				>
-					<div className="modal-body row d-flex justify-content-center">
+					<div className="order-modal-body row d-flex justify-content-center">
 						<ModalHeader
 							// toggle={this.props.handleClose}
 							// charCode="&times;"

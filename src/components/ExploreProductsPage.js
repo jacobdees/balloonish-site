@@ -9,14 +9,18 @@ export default class ExploreProducts extends React.Component {
 		this.state = {
 			modalOpen: false,
 			selectedModal: null,
+			item: props.item,
 		};
 	}
 	openModal = (id) => {
-		this.setState(() => ({ modalOpen: true }));
+		this.setState((id) => ({ modalOpen: true, selectedModal: id }));
 	};
 	handleClose = () => {
 		this.setState(() => ({ modalOpen: false }));
 	};
+	changeSelectedModal(id) {
+		this.setState(() => ({ selectedModal: id }));
+	}
 	render() {
 		return (
 			<div className="container-fluid w-100 items-deck">
@@ -39,12 +43,12 @@ export default class ExploreProducts extends React.Component {
 									colors={m.colors}
 									price={m.price}
 									details={m.details}
-									onClick={this.openModal}
-									selectedModal={() =>
+									onClick={() => {
 										this.setState(() => ({
+											modalOpen: true,
 											selectedModal: m.id,
-										}))
-									}
+										}));
+									}}
 								/>
 							))}
 							{this.state.modalOpen ? (
@@ -52,6 +56,7 @@ export default class ExploreProducts extends React.Component {
 									modalOpen={this.state.modalOpen}
 									handleClose={this.handleClose}
 									selectedModal={this.state.selectedModal}
+									onClick={this.props.onClick}
 								/>
 							) : null}
 						</div>

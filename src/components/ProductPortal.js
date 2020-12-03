@@ -7,47 +7,73 @@ export default class ProductPortal extends React.Component {
 		super(props);
 		this.state = {
 			modalOpen: props.modalOpen,
-			selectedModal: 3,
+			selectedModal: props.selectedModal,
 		};
+	}
+	changeSelectedModal(id) {
+		this.setState(() => ({ selectedModal: id }));
 	}
 	render() {
 		return (
 			<div>
 				<div>
+					{this.changeSelectedModal}
 					{MenuItems.MenuItems.filter(
 						(item) => item.id == this.state.selectedModal
 					).map((filteredItem) => (
-						<Modal
-							isOpen={this.state.modalOpen}
-							toggle={this.props.handleClose}
-							key={filteredItem.id}
-						>
-							<ModalHeader toggle={this.props.handleClose}>
-								{filteredItem.item}
-							</ModalHeader>
-							<ModalBody>
-								{filteredItem.img}
-								{filteredItem.type}
-								{filteredItem.size}
-								{filteredItem.colors}
-								{filteredItem.price}
-								{filteredItem.details}
-							</ModalBody>
-							<ModalFooter>
-								<Button
-									color="primary"
-									onClick={this.props.handleClose}
+						<div className="order-modal-body">
+							<Modal
+								isOpen={this.state.modalOpen}
+								toggle={this.props.handleClose}
+								key={filteredItem.id}
+								centered
+								size="md"
+								className=""
+							>
+								<div
+									className="order-modal-body"
+									// style={{
+									// 	backgroundImage: `url(${filteredItem.img})`,
+									// }}
 								>
-									Order
-								</Button>{' '}
-								<Button
-									color="secondary"
-									onClick={this.props.handleClose}
-								>
-									Go Back
-								</Button>
-							</ModalFooter>
-						</Modal>
+									<ModalHeader className="modal-title">
+										{filteredItem.item} {filteredItem.size}
+									</ModalHeader>
+									<ModalBody className="">
+										{/* <img
+											src={filteredItem.img}
+											className="product-portal-image"
+										/> */}
+										{/* <h1>
+											{filteredItem.item} {filteredItem.size}
+										</h1> */}
+										<h2>
+											Up to {filteredItem.colors} colors
+										</h2>
+										<h2>${filteredItem.price}</h2>
+										<h4>{filteredItem.details}</h4>
+									</ModalBody>
+									<ModalFooter>
+										<Button
+											className="my-auto mr-5 order-button"
+											onClick={
+												(this.props.onClick,
+												this.props.handleClose)
+											}
+											item={`${filteredItem.item} ${filteredItem.type}`}
+										>
+											Order Now
+										</Button>{' '}
+										<Button
+											onClick={this.props.handleClose}
+											className="cancel-button"
+										>
+											Go Back
+										</Button>
+									</ModalFooter>
+								</div>
+							</Modal>
+						</div>
 					))}
 				</div>
 			</div>
