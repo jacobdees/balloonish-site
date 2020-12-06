@@ -80,9 +80,9 @@ export default class ReviewForm extends React.Component {
 			<div className="review-form">
 				{this.state.error === undefined ? (
 					<div className="row d-flex justify-content-center align-items-center h-100 py-auto">
-						<h2 className="review-form-title col-md-4 text-center order-md-12 d-flex align-items-center justify-content-center">
+						<h1 className="review-form-title col-md-4 text-center order-md-12 d-flex align-items-center justify-content-center">
 							<Zoom right>Leave a Review!</Zoom>
-						</h2>
+						</h1>
 						<Form
 							onSubmit={this.onSubmit}
 							className="col-md-4 order-md-1"

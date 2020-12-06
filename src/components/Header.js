@@ -11,7 +11,7 @@ export default class Header extends React.Component {
 			<div>
 				<Slide top>
 					<div className="container"></div>
-					<div className="header fixed-top row d-flex justify-content-around">
+					<div className="header fixed-top row d-flex justify-content-around align-items-center">
 						<h1 className="col-sm-3 col-6 ml-sm-5">balloon.ish</h1>
 						<Button
 							className="my-auto mr-5 order-button"

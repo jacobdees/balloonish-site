@@ -26,7 +26,7 @@ export default class ExploreProducts extends React.Component {
 		return (
 			<div className="container-fluid w-100 items-deck">
 				<div className="">
-					<Bounce bottom>
+					<Bounce top>
 						<h2 className="col-12 text-center item-deck-title">
 							What will you celebrate today?
 						</h2>

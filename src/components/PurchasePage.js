@@ -21,11 +21,12 @@ export default class PurchasePage extends React.Component {
 		super(props);
 
 		this.state = {
-			error: undefined,
+			error: false,
 			formSubmitted: false,
 			fName: props.fName,
 			lName: props.lName,
 			tel: props.tel,
+			normTel: '',
 			email: props.email,
 			pref: props.pref,
 			dropdown: false,
@@ -87,19 +88,16 @@ export default class PurchasePage extends React.Component {
 	};
 
 	onSubmit = (e) => {
-		e.preventDefault();
 		if (
 			this.state.fName &&
 			this.state.lName &&
-			((this.state.pref === 'tel' && this.state.tel) ||
-				(this.state.pref === 'email' && this.state.email) ||
-				(this.state.pref === both &&
-					this.state.tel &&
-					this.state.email)) &&
+			this.state.normTel &&
+			this.state.email &&
 			this.state.item &&
 			this.state.date
 		) {
 			alert('SUBMITTED');
+			e.preventDefault();
 			this.props.handleClose();
 			this.setState(() => ({ error: false }));
 		} else {
@@ -181,16 +179,15 @@ export default class PurchasePage extends React.Component {
 							<Row>
 								<Col xs={9} className="mx-auto my-2">
 									<FormGroup>
-										<PhoneInput
-											type="tel"
-											id="tel"
-											placeholder="Phone"
-											value={this.state.tel}
-											onChange={this.onTelChange}
-											className="col-md-12 form-box"
+										<Input
+											type="email"
+											placeholder="Email"
+											value={this.state.email}
+											onChange={this.onEmailChange}
+											className="form-box"
 											invalid={
 												this.state.error &&
-												!this.state.tel
+												!this.state.email
 													? true
 													: false
 											}
@@ -201,15 +198,16 @@ export default class PurchasePage extends React.Component {
 							<Row>
 								<Col xs={9} className="mx-auto my-2">
 									<FormGroup>
-										<Input
-											type="email"
-											placeholder="Email"
-											value={this.state.email}
-											onChange={this.onEmailChange}
-											className="form-box"
+										<PhoneInput
+											type="tel"
+											id="tel"
+											placeholder="Phone"
+											value={this.state.tel}
+											onChange={this.onTelChange}
+											className="col-md-12 form-box"
 											invalid={
 												this.state.error &&
-												!this.state.email
+												!this.state.tel
 													? true
 													: false
 											}
@@ -242,11 +240,11 @@ export default class PurchasePage extends React.Component {
 												<Input
 													type="radio"
 													name="radio2"
-													value="tel"
+													value="email"
 													onChange={this.onPrefChange}
 													className=""
 												/>{' '}
-												Phone
+												Email
 											</Label>
 										</FormGroup>
 										<FormGroup check>
@@ -254,11 +252,11 @@ export default class PurchasePage extends React.Component {
 												<Input
 													type="radio"
 													name="radio2"
-													value="email"
+													value="tel"
 													onChange={this.onPrefChange}
 													className=""
 												/>{' '}
-												Email
+												Phone
 											</Label>
 										</FormGroup>
 										<FormGroup check>

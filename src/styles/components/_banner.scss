@@ -10,6 +10,7 @@
 	scroll-behavior: unset;
 	width: auto;
 	height: 100vh;
+	overflow-x: hidden;
 	// border: 10px solid $beige;
 	// position: absolute;
 }
@@ -21,4 +22,5 @@
 	width: auto;
 	position: absolute;
 	overflow: hidden;
+	overflow-x: hidden;
 }
