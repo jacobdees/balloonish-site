@@ -194,9 +194,14 @@ export default class ReviewForm extends React.Component {
 						</Form>
 					</div>
 				) : (
-					<h1 className="text-center">
-						Thank you for submitting your review of balloon.ish!
-					</h1>
+					<div className="container h-100">
+						<div className="row display-flex justify-content-center text-center align-items-center h-100 py-auto">
+							<h1 className="col-12">
+								Thank you for submitting your review of
+								balloon.ish!
+							</h1>
+						</div>
+					</div>
 				)}
 			</div>
 		);

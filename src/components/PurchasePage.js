@@ -9,6 +9,10 @@ import {
 	Input,
 	Modal,
 	ModalHeader,
+	Dropdown,
+	DropdownToggle,
+	DropdownMenu,
+	DropdownItem,
 } from 'reactstrap';
 import DatePicker from 'react-datepicker';
 import MenuItems from './MenuItems';
@@ -48,9 +52,10 @@ export default class PurchasePage extends React.Component {
 	};
 
 	onTelChange = (e) => {
-		const tel = normalize(e);
-		const normTel = normalize(tel);
-		this.setState(() => ({ normTel }));
+		// const tel = normalize(e);
+		// const normTel = normalize(tel);
+		const tel = e.target.value;
+		this.setState(() => ({ tel }));
 	};
 
 	onEmailChange = (e) => {
@@ -63,14 +68,15 @@ export default class PurchasePage extends React.Component {
 		this.setState(() => ({ pref }));
 	};
 
-	onDropdownChange = (e) => {
-		const dropdown = e.target.value;
+	onDropdownToggle = (e) => {
+		// const dropdown = e.target.value;
 		this.setState(() => ({ dropdown: !this.state.dropdown }));
 	};
 
 	onItemChange = (e) => {
 		const item = e.target.value;
 		this.setState(() => ({ item }));
+		// this.onDropdownToggle();
 	};
 
 	onDateChange = (e) => {
@@ -88,18 +94,18 @@ export default class PurchasePage extends React.Component {
 	};
 
 	onSubmit = (e) => {
+		e.preventDefault();
 		if (
 			this.state.fName &&
 			this.state.lName &&
-			this.state.normTel &&
+			this.state.tel &&
 			this.state.email &&
 			this.state.item &&
 			this.state.date
 		) {
-			alert('SUBMITTED');
-			e.preventDefault();
-			this.props.handleClose();
-			this.setState(() => ({ error: false }));
+			// alert('SUBMITTED');
+			// this.props.handleClose();
+			this.setState(() => ({ error: false, formSubmitted: true }));
 		} else {
 			this.setState(() => ({ error: true }));
 		}
@@ -116,250 +122,283 @@ export default class PurchasePage extends React.Component {
 						Order Now
 					</Button>
 				</div>
-				<Modal
-					isOpen={this.props.modalOpen}
-					toggle={this.props.handleClose}
-					className=""
-					centered
-					size="md"
-				>
-					<div className="order-modal-body row d-flex justify-content-center">
-						<ModalHeader
-							// toggle={this.props.handleClose}
-							// charCode="&times;"
-							className="modal-title"
-						>
-							Purchase Information
-						</ModalHeader>
-						{/* <h1 className="col-12 text-center">
+				{this.state.formSubmitted ? (
+					<Modal
+						isOpen={this.props.modalOpen}
+						toggle={this.props.handleClose}
+						centered
+						size="md"
+					>
+						<ModalHeader>Testing</ModalHeader>
+					</Modal>
+				) : (
+					<Modal
+						isOpen={this.props.modalOpen}
+						toggle={this.props.handleClose}
+						className=""
+						centered
+						size="md"
+					>
+						<div className="order-modal-body row d-flex justify-content-center">
+							<ModalHeader
+								// toggle={this.props.handleClose}
+								// charCode="&times;"
+								className="modal-title"
+							>
+								Purchase Information
+							</ModalHeader>
+							{/* <h1 className="col-12 text-center">
 							Purchase Information
 						</h1> */}
-						<Form onSubmit={this.onSubmit}>
-							<Row>
-								<Col xs={9} className="mx-auto my-2">
-									<FormGroup>
-										<Input
-											type="text"
-											id="fName"
-											autoFocus
-											placeholder="First Name"
-											value={this.state.fName}
-											onChange={this.onfNameChange}
-											className="form-box"
-											invalid={
-												this.state.error &&
-												!this.state.fName
-													? true
-													: false
-											}
-										/>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row>
-								<Col xs={9} className="mx-auto my-2">
-									<FormGroup>
-										<Input
-											type="text"
-											id="lName"
-											placeholder="Last Name"
-											value={this.state.lName}
-											onChange={this.onlNameChange}
-											className=" form-box"
-											invalid={
-												this.state.error &&
-												!this.state.lName
-													? true
-													: false
-											}
-										/>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row>
-								<Col xs={9} className="mx-auto my-2">
-									<FormGroup>
-										<Input
-											type="email"
-											placeholder="Email"
-											value={this.state.email}
-											onChange={this.onEmailChange}
-											className="form-box"
-											invalid={
-												this.state.error &&
-												!this.state.email
-													? true
-													: false
-											}
-										/>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row>
-								<Col xs={9} className="mx-auto my-2">
-									<FormGroup>
-										<PhoneInput
-											type="tel"
-											id="tel"
-											placeholder="Phone"
-											value={this.state.tel}
-											onChange={this.onTelChange}
-											className="col-md-12 form-box"
-											invalid={
-												this.state.error &&
-												!this.state.tel
-													? true
-													: false
-											}
-										/>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row>
-								<Col
-									md={8}
-									className="mx-auto my-2 text-center"
-								>
-									<FormGroup
-										tag="fieldset"
-										check
-										inline
-										invalid={
-											this.state.error && !this.state.pref
-												? true
-												: false
-										}
+							<Form onSubmit={this.onSubmit}>
+								<Row>
+									<Col xs={9} className="mx-auto my-2">
+										<FormGroup>
+											<Input
+												type="text"
+												id="fName"
+												autoFocus
+												placeholder="First Name"
+												value={this.state.fName}
+												onChange={this.onfNameChange}
+												className="form-box"
+												invalid={
+													this.state.error &&
+													!this.state.fName
+														? true
+														: false
+												}
+											/>
+										</FormGroup>
+									</Col>
+								</Row>
+								<Row>
+									<Col xs={9} className="mx-auto my-2">
+										<FormGroup>
+											<Input
+												type="text"
+												id="lName"
+												placeholder="Last Name"
+												value={this.state.lName}
+												onChange={this.onlNameChange}
+												className=" form-box"
+												invalid={
+													this.state.error &&
+													!this.state.lName
+														? true
+														: false
+												}
+											/>
+										</FormGroup>
+									</Col>
+								</Row>
+								<Row>
+									<Col xs={9} className="mx-auto my-2">
+										<FormGroup>
+											<Input
+												type="email"
+												placeholder="Email"
+												value={this.state.email}
+												onChange={this.onEmailChange}
+												className="form-box"
+												invalid={
+													this.state.error &&
+													!this.state.email
+														? true
+														: false
+												}
+											/>
+										</FormGroup>
+									</Col>
+								</Row>
+								<Row>
+									<Col xs={9} className="mx-auto my-2">
+										<FormGroup>
+											<Input
+												type="tel"
+												inputMode="tel"
+												id="tel"
+												placeholder="Phone"
+												value={this.state.tel}
+												onChange={this.onTelChange}
+												className="col-md-12 form-box"
+												invalid={
+													this.state.error &&
+													!this.state.tel
+														? true
+														: false
+												}
+											/>
+										</FormGroup>
+									</Col>
+								</Row>
+								<Row>
+									<Col
+										md={8}
+										className="mx-auto my-2 text-center"
 									>
-										<FormGroup check inline>
-											<Label check>
-												Contact Preference{' '}
-											</Label>
-										</FormGroup>
-										<FormGroup check>
-											<Label check>
-												<Input
-													type="radio"
-													name="radio2"
-													value="email"
-													onChange={this.onPrefChange}
-													className=""
-												/>{' '}
-												Email
-											</Label>
-										</FormGroup>
-										<FormGroup check>
-											<Label check>
-												<Input
-													type="radio"
-													name="radio2"
-													value="tel"
-													onChange={this.onPrefChange}
-													className=""
-												/>{' '}
-												Phone
-											</Label>
-										</FormGroup>
-										<FormGroup check>
-											<Label check>
-												<Input
-													type="radio"
-													name="radio2"
-													value="both"
-													onChange={this.onPrefChange}
-													className=""
-												/>{' '}
-												Both
-											</Label>
-										</FormGroup>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row className="d-flex justify-content-center align-items-center mx-auto">
-								<Col
-									xs={6}
-									className="mx-auto my-2 text-center d-flex justify-content-center my-auto"
-								>
-									<FormGroup className="">
-										<select
-											onChange={this.onItemChange}
-											className="form-box"
-											placeholder="Choose an Item"
+										<FormGroup
+											tag="fieldset"
+											check
+											inline
+											invalid={
+												this.state.error &&
+												!this.state.pref
+													? true
+													: false
+											}
 										>
-											<option
-												value=""
-												disabled
-												selected
-												style={{ color: '$off-white' }}
-											>
-												Choose an Item
-											</option>
-											{MenuItems.MenuItems.map((m) => (
-												<option
-													key={m.id}
-													value={this.state.item}
-													className="dropdown-options"
-												>
-													{m.item} ({m.type})
-												</option>
-											))}
-										</select>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row className="d-flex justify-content-center align-items-center mx-auto">
-								<Col
-									xs={6}
-									className="my-auto d-flex justify-content-center"
-								>
-									<FormGroup>
-										<DatePicker
-											selected={this.state.date}
-											onChange={(date) =>
-												this.onDateChange(date)
-											}
-											placeholderText="Choose a Date"
-											style={{ placeholder: 'white' }}
-											className="date-form-box text-center"
-										/>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row>
-								<Col xs={9} className="mx-auto my-2">
-									<FormGroup>
-										<Label htmlFor="note">
-											Extra Comments:{' '}
-										</Label>
-										<Input
-											type="textarea"
-											id="note"
-											placeholder="(Optional)"
-											value={this.state.review}
-											onChange={this.onNoteChange}
-											className=" form-box"
-										></Input>
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row>
-								<Col
-									md={12}
-									className="mx-auto my-2 text-center"
-								>
-									<Button
-										className="cancel-button col-6 col-md-4 m-2"
-										onClick={this.props.handleClose}
+											<FormGroup check inline>
+												<Label check>
+													Contact Preference{' '}
+												</Label>
+											</FormGroup>
+											<FormGroup check>
+												<Label check>
+													<Input
+														type="radio"
+														name="radio2"
+														value="email"
+														onChange={
+															this.onPrefChange
+														}
+														className=""
+													/>{' '}
+													Email
+												</Label>
+											</FormGroup>
+											<FormGroup check>
+												<Label check>
+													<Input
+														type="radio"
+														name="radio2"
+														value="tel"
+														onChange={
+															this.onPrefChange
+														}
+														className=""
+													/>{' '}
+													Phone
+												</Label>
+											</FormGroup>
+											<FormGroup check>
+												<Label check>
+													<Input
+														type="radio"
+														name="radio2"
+														value="both"
+														onChange={
+															this.onPrefChange
+														}
+														className=""
+													/>{' '}
+													Both
+												</Label>
+											</FormGroup>
+										</FormGroup>
+									</Col>
+								</Row>
+								<Row className="d-flex justify-content-center align-items-center mx-auto">
+									<Col
+										xs={8}
+										className="mx-auto my-2 text-center d-flex justify-content-center my-auto"
 									>
-										Cancel
-									</Button>
-									<Button className="order-button col-6 col-md-4 m-2">
-										Submit
-									</Button>
-								</Col>
-							</Row>
-						</Form>
-					</div>
-				</Modal>
+										<FormGroup className="">
+											{/* <Input> */}
+											<Dropdown
+												group
+												size="lg"
+												isOpen={this.state.dropdown}
+												toggle={this.onDropdownToggle}
+												onChange={this.onItemChange}
+												className="dropdown-button"
+											>
+												<DropdownToggle className="order-button">
+													{this.state.item
+														? this.state.item
+														: 'Choose an Item'}
+												</DropdownToggle>
+												<DropdownMenu>
+													{MenuItems.MenuItems.map(
+														(m) => (
+															<DropdownItem
+																key={m.id}
+																value={`${m.item} (${m.type})`}
+																onClick={
+																	this
+																		.onItemChange
+																}
+															>
+																{m.item} (
+																{m.type})
+															</DropdownItem>
+														)
+													)}
+												</DropdownMenu>
+											</Dropdown>
+										</FormGroup>
+									</Col>
+								</Row>
+								<Row className="d-flex justify-content-center align-items-center mx-auto">
+									<Col
+										xs={8}
+										className="my-auto d-flex justify-content-center"
+									>
+										<FormGroup>
+											<DatePicker
+												selected={this.state.date}
+												onChange={(date) =>
+													this.onDateChange(date)
+												}
+												placeholderText="Choose a Date"
+												className="date-form-box text-center"
+												invalid={
+													this.state.error &&
+													!this.state.date
+														? true
+														: false
+												}
+											/>
+										</FormGroup>
+									</Col>
+								</Row>
+								<Row>
+									<Col xs={9} className="mx-auto my-2">
+										<FormGroup>
+											<Label htmlFor="note">
+												Extra Comments:{' '}
+											</Label>
+											<Input
+												type="textarea"
+												id="note"
+												placeholder="(Optional)"
+												value={this.state.review}
+												onChange={this.onNoteChange}
+												className=" form-box"
+											></Input>
+										</FormGroup>
+									</Col>
+								</Row>
+								<Row>
+									<Col
+										md={12}
+										className="mx-auto my-2 text-center"
+									>
+										<Button
+											className="cancel-button col-6 col-md-4 m-2"
+											onClick={this.props.handleClose}
+										>
+											Cancel
+										</Button>
+										<Button className="order-button col-6 col-md-4 m-2">
+											Submit
+										</Button>
+									</Col>
+								</Row>
+							</Form>
+						</div>
+					</Modal>
+				)}
 			</div>
 		);
 	}

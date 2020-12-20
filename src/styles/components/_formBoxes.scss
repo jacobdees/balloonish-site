@@ -6,6 +6,7 @@
 	border: 0.5px solid $off-black;
 	border-radius: 5px;
 	color: $off-black;
+	background-color: white;
 }
 
 .form-box::placeholder {
@@ -36,6 +37,6 @@
 // 	color: white;
 // }
 
-.date-form-box:hover::placeholder {
-	color: white;
-}
+// .date-form-box:hover::placeholder {
+// 	color: white;
+// }

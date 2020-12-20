@@ -1,13 +1,16 @@
 .review-form {
 	height: 75vh;
-	background: $off-white;
-	background: linear-gradient(180deg, $dark-blue 0%, white 50%);
+	background: white;
+	// background: linear-gradient(180deg, $dark-blue 0%, white 50%);
 }
 
 .review-form-title {
 	text-align: center;
 	font-size: $xl-size;
 }
+
+// .review-submission {
+// }
 
 // .form-box {
 // 	display: flex;
