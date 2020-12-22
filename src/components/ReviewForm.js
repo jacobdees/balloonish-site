@@ -20,7 +20,8 @@ export default class ReviewForm extends React.Component {
 		super(props);
 
 		this.state = {
-			error: undefined,
+			error: false,
+			formSubmitted: false,
 			fName: props.fName,
 			lName: props.lName,
 			email: props.email,
@@ -55,22 +56,15 @@ export default class ReviewForm extends React.Component {
 	};
 
 	onSubmit = (e) => {
-		// e.preventDefault();
+		e.preventDefault();
 		// send submitted info to back-end
 
-		if (!this.state.email || !this.state.rating) {
+		if (!this.state.rating) {
 			this.setState(() => ({
-				error: 'Email and rating required',
+				error: true,
 			}));
 		} else {
-			this.setState(() => ({ error: '' }));
-			this.onSubmit({
-				fName: this.state.fName,
-				lName: this.state.lName,
-				email: this.state.email,
-				rating: parseFloat(this.state.rating),
-				review: this.state.review,
-			});
+			this.setState(() => ({ error: false, formSubmitted: true }));
 		}
 	};
 
@@ -78,14 +72,14 @@ export default class ReviewForm extends React.Component {
 		// if (this.state.error === '') {
 		return (
 			<div className="review-form">
-				{this.state.error === undefined ? (
+				{this.state.formSubmitted === false ? (
 					<div className="row d-flex justify-content-center align-items-center h-100 py-auto">
 						<h1 className="review-form-title col-md-4 text-center order-md-12 d-flex align-items-center justify-content-center">
 							<Zoom right>Leave a Review!</Zoom>
 						</h1>
 						<Form
 							onSubmit={this.onSubmit}
-							className="col-md-4 order-md-1"
+							className="col-md-4 order-md-1 order-modal-body p-5"
 						>
 							<Row form className="d-flex justify-content-center">
 								<Col md={5} xs={8}>
@@ -97,6 +91,12 @@ export default class ReviewForm extends React.Component {
 											value={this.state.fName}
 											onChange={this.onfNameChange}
 											className="form-box"
+											invalid={
+												this.state.error &&
+												!this.state.fName
+													? true
+													: false
+											}
 										></Input>
 									</FormGroup>
 								</Col>
@@ -109,6 +109,12 @@ export default class ReviewForm extends React.Component {
 											value={this.state.lName}
 											onChange={this.onlNameChange}
 											className="form-box"
+											invalid={
+												this.state.error &&
+												!this.state.fName
+													? true
+													: false
+											}
 										></Input>
 									</FormGroup>
 								</Col>
@@ -122,6 +128,12 @@ export default class ReviewForm extends React.Component {
 											value={this.state.email}
 											onChange={this.onEmailChange}
 											className="form-box"
+											invalid={
+												this.state.error &&
+												!this.state.fName
+													? true
+													: false
+											}
 										></Input>
 									</FormGroup>
 								</Col>
@@ -186,7 +198,16 @@ export default class ReviewForm extends React.Component {
 									onChange={this.onPictureChange}
 								/>
 							</FormGroup> */}
-							<div className="d-flex justify-content-center">
+							<div className="d-flex row justify-content-center">
+								{this.state.error && !this.state.rating ? (
+									<p className="submission-error-text text-center">
+										Please provide a rating
+									</p>
+								) : (
+									<p></p>
+								)}
+							</div>
+							<div className="d-flex row justify-content-center">
 								<Button className="order-button col-8 col-lg-10">
 									Submit
 								</Button>

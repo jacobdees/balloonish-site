@@ -9,6 +9,7 @@ import {
 	Input,
 	Modal,
 	ModalHeader,
+	ModalBody,
 	Dropdown,
 	DropdownToggle,
 	DropdownMenu,
@@ -26,6 +27,7 @@ export default class PurchasePage extends React.Component {
 
 		this.state = {
 			error: false,
+			errorArr: [],
 			formSubmitted: false,
 			fName: props.fName,
 			lName: props.lName,
@@ -95,6 +97,14 @@ export default class PurchasePage extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
+		let infoArr = [
+			this.state.fName,
+			this.state.lName,
+			this.state.tel,
+			this.state.email,
+			this.state.item,
+			this.state.date,
+		];
 		if (
 			this.state.fName &&
 			this.state.lName &&
@@ -107,29 +117,54 @@ export default class PurchasePage extends React.Component {
 			// this.props.handleClose();
 			this.setState(() => ({ error: false, formSubmitted: true }));
 		} else {
-			this.setState(() => ({ error: true }));
+			let newError = [];
+			if (this.state.item == null && this.state.date == null) {
+				newError.push('Choose an item', 'Choose a date');
+			} else if (this.state.item == null) {
+				newError.push('Choose an item');
+			} else if (this.state.date == null) {
+				newError.push('Choose a date');
+			}
+			this.setState(() => ({
+				error: true,
+				errorArr: newError,
+			}));
 		}
 	};
 
 	render() {
 		return (
 			<div>
-				<div className="d-flex justify-content-center purchase-button">
+				{/* <div className="d-flex justify-content-center purchase-button">
 					<Button
 						className="order-button col-lg-5 col-10 py-4 my-5"
 						onClick={this.props.onClick}
 					>
 						Order Now
 					</Button>
-				</div>
+				</div> */}
 				{this.state.formSubmitted ? (
 					<Modal
 						isOpen={this.props.modalOpen}
 						toggle={this.props.handleClose}
 						centered
 						size="md"
+						className=""
 					>
-						<ModalHeader>Testing</ModalHeader>
+						<div className="order-modal-body">
+							<ModalHeader className="modal-title row d-flex justify-content-center">
+								Thank you!
+							</ModalHeader>
+							<div className="row d-flex justify-content-center">
+								<ModalBody className="text-center col-10">
+									<h2>
+										We have received your order. We will
+										contact you soon to retrieve more
+										information about your special occasion!
+									</h2>
+								</ModalBody>
+							</div>
+						</div>
 					</Modal>
 				) : (
 					<Modal
@@ -379,18 +414,33 @@ export default class PurchasePage extends React.Component {
 										</FormGroup>
 									</Col>
 								</Row>
+								{this.state.error ? (
+									<div className="submission-error-text">
+										<p>
+											In order to complete your order, we
+											need the following information:
+										</p>
+										<ul>
+											{this.state.errorArr.map((e) => (
+												<li>{e}</li>
+											))}
+										</ul>
+									</div>
+								) : (
+									<p></p>
+								)}
 								<Row>
 									<Col
 										md={12}
 										className="mx-auto my-2 text-center"
 									>
 										<Button
-											className="cancel-button col-6 col-md-4 m-2"
+											className="cancel-button col-4 m-2"
 											onClick={this.props.handleClose}
 										>
 											Cancel
 										</Button>
-										<Button className="order-button col-6 col-md-4 m-2">
+										<Button className="order-button col-4 m-2">
 											Submit
 										</Button>
 									</Col>

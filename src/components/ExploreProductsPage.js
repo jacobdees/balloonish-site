@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'reactstrap';
 import IndividualProducts from './IndividualProducts';
 import MenuItems from './MenuItems';
 import ProductPortal from './ProductPortal';
@@ -11,6 +12,8 @@ export default class ExploreProducts extends React.Component {
 			modalOpen: false,
 			selectedModal: null,
 			item: props.item,
+			isDesktop: false,
+			viewLimit: 3,
 		};
 	}
 	openModal = (id) => {
@@ -22,6 +25,27 @@ export default class ExploreProducts extends React.Component {
 	changeSelectedModal(id) {
 		this.setState(() => ({ selectedModal: id }));
 	}
+
+	componentDidMount() {
+		this.updatePredicate();
+		window.addEventListener('resize', this.updatePredicate);
+	}
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.updatePredicate);
+	}
+
+	updatePredicate() {
+		this.setState(() => ({ isDesktop: window.innerWidth > 1450 }));
+	}
+
+	expandProducts = () => {
+		this.setState(() => {
+			{
+				viewLimit: 10;
+			}
+		});
+	};
+
 	render() {
 		return (
 			<div className="container-fluid w-100 items-deck">
@@ -35,25 +59,67 @@ export default class ExploreProducts extends React.Component {
 						<div className="row d-flex justify-content-around">
 							{/* {console.log(MenuItems.MenuItems)} */}
 							{/* {console.log(menuItems)} */}
-							{MenuItems.MenuItems.map((m) => (
-								<IndividualProducts
-									// className="row"
-									key={m.id}
-									title={m.item}
-									img={m.img}
-									type={m.type}
-									size={m.size}
-									colors={m.colors}
-									price={m.price}
-									details={m.details}
-									onClick={() => {
-										this.setState(() => ({
-											modalOpen: true,
-											selectedModal: m.id,
-										}));
-									}}
-								/>
-							))}
+							{this.state.isDesktop ? (
+								MenuItems.MenuItems.map((m) => (
+									<IndividualProducts
+										// className="row"
+										key={m.id}
+										title={m.item}
+										img={m.img}
+										type={m.type}
+										size={m.size}
+										colors={m.colors}
+										price={m.price}
+										details={m.details}
+										onClick={() => {
+											this.setState(() => ({
+												modalOpen: true,
+												selectedModal: m.id,
+											}));
+										}}
+									/>
+								))
+							) : (
+								<div className="container-fluid">
+									<div className="row d-flex justify-content-around">
+										{MenuItems.MenuItems.filter(
+											(item) =>
+												item.id <= this.state.viewLimit
+										).map((m) => (
+											<IndividualProducts
+												// className="row"
+												key={m.id}
+												title={m.item}
+												img={m.img}
+												type={m.type}
+												size={m.size}
+												colors={m.colors}
+												price={m.price}
+												details={m.details}
+												onClick={() => {
+													this.setState(() => ({
+														modalOpen: true,
+														selectedModal: m.id,
+													}));
+												}}
+											/>
+										))}
+									</div>
+									<div className="row d-flex justify-content-around">
+										<Button
+											className="order-button my-5 col-10"
+											onClick={() => {
+												this.setState(() => ({
+													isDesktop: true,
+												}));
+											}}
+										>
+											Show More
+										</Button>
+									</div>
+								</div>
+							)}
+
 							{this.state.modalOpen ? (
 								<ProductPortal
 									modalOpen={this.state.modalOpen}

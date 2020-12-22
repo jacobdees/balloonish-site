@@ -16,7 +16,7 @@ export default class AboutPage extends React.Component {
 							src="/images/kam-circle.png"
 						></img>
 					</Fade>
-					<h3 className="about-page-bio col-md-3 mb-3 pr-5 text-md-right text-center h-0 d-flex align-self-center justify-self-center mx-auto">
+					<h3 className="about-page-bio col-md-3 mb-5 mb-md-3 pr-5 text-md-right text-center h-0 d-flex align-self-center justify-self-center mx-auto">
 						<Fade right>
 							Here's where a bio would go. This would also be a
 							good place to put a quick blurb or mission statement
