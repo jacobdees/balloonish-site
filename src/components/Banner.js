@@ -12,8 +12,11 @@ export default class Banner extends React.Component {
 					<Motion
 						defaultStyle={{ y: -200, opacity: 0 }}
 						style={{
-							y: spring(10, { stiffness: 100, damping: 40 }),
-							opacity: spring(1),
+							y: spring(0, { stiffness: 150, damping: 20 }),
+							opacity: spring(10, {
+								stiffness: 100,
+								damping: 40,
+							}),
 						}}
 					>
 						{(interpolatingStyle) => (
