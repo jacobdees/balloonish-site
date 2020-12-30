@@ -62,6 +62,7 @@ export default class ProductPortal extends React.Component {
 										className="row d-flex justify-content-center align-items-center item-card-images blur"
 										style={{
 											backgroundImage: `url(${filteredItem.img})`,
+											cursor: 'auto',
 										}}
 									>
 										{/* <Flip

@@ -3,6 +3,7 @@ import { Button } from 'reactstrap';
 import IndividualProducts from './IndividualProducts';
 import MenuItems from './MenuItems';
 import ProductPortal from './ProductPortal';
+import { Motion, spring } from 'react-motion';
 import { Fade, Slide, Bounce, Flip } from 'react-reveal';
 
 export default class ExploreProducts extends React.Component {
@@ -50,15 +51,13 @@ export default class ExploreProducts extends React.Component {
 		return (
 			<div className="container-fluid w-100 items-deck">
 				<div className="">
-					<Bounce top>
+					<Slide bottom duration={2000}>
 						<h2 className="col-12 text-center item-deck-title">
 							What will you celebrate today?
 						</h2>
-					</Bounce>
+					</Slide>
 					<div className="container-fluid">
 						<div className="row d-flex justify-content-around">
-							{/* {console.log(MenuItems.MenuItems)} */}
-							{/* {console.log(menuItems)} */}
 							{this.state.isDesktop ? (
 								MenuItems.MenuItems.map((m) => (
 									<IndividualProducts

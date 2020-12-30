@@ -26,6 +26,9 @@ const IndividualProducts = (props) => {
 				>
 					<Flip
 						top
+						delay={500}
+						duration={1500}
+						cascade
 						className="row d-flex align-items-end border border-danger"
 					>
 						<CardTitle className="item-card-title col-12 text-center">
