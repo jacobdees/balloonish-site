@@ -59,7 +59,7 @@ export default class ProductPortal extends React.Component {
 									// selectedModal={props.id}
 								>
 									<CardBody
-										className="row d-flex justify-content-center align-items-center item-card-images"
+										className="row d-flex justify-content-center align-items-center item-card-images blur"
 										style={{
 											backgroundImage: `url(${filteredItem.img})`,
 										}}
@@ -68,7 +68,8 @@ export default class ProductPortal extends React.Component {
 												top
 												className="row d-flex align-items-end border border-danger"
 											> */}
-										<CardTitle className="item-card-title col-12 text-center">
+										{/* <span className="blur"> */}
+										<CardTitle className="item-card-title col-10 text-center">
 											<h1>
 												{filteredItem.item}{' '}
 												{filteredItem.size}
@@ -83,20 +84,21 @@ export default class ProductPortal extends React.Component {
 											<h2 className="col-12 h-25">
 												{filteredItem.details}
 											</h2>
+											<Button
+												className="my-auto mr-5 order-button"
+												onClick={this.props.onClick}
+												item={`${filteredItem.item} ${filteredItem.type}`}
+											>
+												Order Now
+											</Button>{' '}
+											<Button
+												onClick={this.props.handleClose}
+												className="cancel-button"
+											>
+												Go Back
+											</Button>
 										</CardTitle>
-										<Button
-											className="my-auto mr-5 order-button"
-											onClick={this.props.onClick}
-											item={`${filteredItem.item} ${filteredItem.type}`}
-										>
-											Order Now
-										</Button>{' '}
-										<Button
-											onClick={this.props.handleClose}
-											className="cancel-button"
-										>
-											Go Back
-										</Button>
+										{/* </span> */}
 										{/* </Flip> */}
 									</CardBody>
 								</Card>

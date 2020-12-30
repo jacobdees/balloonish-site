@@ -22,7 +22,7 @@
 	border-radius: 5px;
 	font-weight: bold;
 	padding: $s-size;
-	opacity: 0.9;
+	opacity: 0.95;
 }
 
 .item-card-images {
@@ -33,6 +33,22 @@
 
 .card-details {
 	font-size: $s-size;
+}
+
+.item-card-modal {
+	backdrop-filter: blur(5px);
+}
+
+.blur {
+	// background: rgba(
+	// 	255,
+	// 	255,
+	// 	255,
+	// 	0.2
+	// ); // Make sure this color has an opacity of less than 1
+	backdrop-filter: blur(8px); // This be the blur
+	// height: 100%;
+	// width: 50%;
 }
 
 // .item-cards-subtitle {
