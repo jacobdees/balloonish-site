@@ -15,11 +15,20 @@ import {
 	DropdownMenu,
 	DropdownItem,
 } from 'reactstrap';
+// import { GoogleSpreadsheet } from 'google-spreadsheet';
 import DatePicker from 'react-datepicker';
+import emailjs from 'emailjs-com';
 import MenuItems from './MenuItems';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-phone-number-input/style.css';
 import PhoneInput, { normalize } from 'react-phone-input-auto-format';
+import { Slide, Fade, Pulse } from 'react-reveal';
+
+// const SPREADSHEET_ID = '1FciUy-bW8A4hqmQqfWHY6IITDSv3JKDRXQyqVCeavpA';
+// const CLIENT_ID =
+// 	'1058351575600-8o2peomlils5g2q7ahr5c0iqhckgv1t0.apps.googleusercontent.com';
+// const API_KEY = 'AIzaSyAAbMi9MDDZh6gPhGtdiL7h8c1r1FWopMI';
+// const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
 
 export default class PurchasePage extends React.Component {
 	constructor(props) {
@@ -42,6 +51,36 @@ export default class PurchasePage extends React.Component {
 			note: props.note,
 		};
 	}
+
+	// componentDidMount() {
+	// 	gapi.load('client:auth2', this.initClient);
+	// }
+
+	// handleClientLoad = () => {
+	// 	//initialize the Google API
+	// 	gapi.load('client:auth2', this.initClient);
+	// };
+
+	initClient = () => {
+		//provide the authentication credentials you set up in the Google developer console
+		gapi.client
+			.init({
+				apiKey: API_KEY,
+				clientId: CLIENT_ID,
+				scope: SCOPE,
+				discoveryDocs: [
+					'https://sheets.googleapis.com/$discovery/rest?version=v4',
+				],
+			})
+			.then(() => {
+				gapi.auth2
+					.getAuthInstance()
+					.isSignedIn.listen(this.updateSignInStatus); //add a function called `updateSignInStatus` if you want to do something once a user is logged in with Google
+				this.updateSignInStatus(
+					gapi.auth2.getAuthInstance().isSignedIn.get()
+				);
+			});
+	};
 
 	onfNameChange = (e) => {
 		const fName = e.target.value;
@@ -97,6 +136,34 @@ export default class PurchasePage extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
+
+		const templateParams = {
+			FirstName: this.state.fName,
+			LastName: this.state.lName,
+			Item: this.state.item,
+			Date: this.state.date,
+			Note: this.state.note,
+			EmailAddress: this.state.email,
+			TelephoneNumber: this.state.tel,
+			Preference: this.state.pref,
+		};
+
+		// emailjs
+		// 	.send(
+		// 		'jacobd139',
+		// 		'balloon.ish-order',
+		// 		templateParams,
+		// 		'user_vQr9F12F8HQtq9R60srwH'
+		// 	)
+		// 	.then(
+		// 		(result) => {
+		// 			console.log(result.text);
+		// 		},
+		// 		(error) => {
+		// 			console.log(error.text);
+		// 		}
+		// 	);
+
 		let infoArr = [
 			this.state.fName,
 			this.state.lName,
@@ -113,8 +180,6 @@ export default class PurchasePage extends React.Component {
 			this.state.item &&
 			this.state.date
 		) {
-			// alert('SUBMITTED');
-			// this.props.handleClose();
 			this.setState(() => ({ error: false, formSubmitted: true }));
 		} else {
 			let newError = [];
@@ -144,28 +209,37 @@ export default class PurchasePage extends React.Component {
 					</Button>
 				</div> */}
 				{this.state.formSubmitted ? (
-					<Modal
-						isOpen={this.props.modalOpen}
-						toggle={this.props.handleClose}
-						centered
-						size="md"
-						className=""
-					>
-						<div className="order-modal-body">
-							<ModalHeader className="modal-title row d-flex justify-content-center">
-								Thank you!
-							</ModalHeader>
-							<div className="row d-flex justify-content-center">
-								<ModalBody className="text-center col-10">
-									<h2>
-										We have received your order. We will
-										contact you soon to retrieve more
-										information about your special occasion!
-									</h2>
-								</ModalBody>
+					<Fade top>
+						<Modal
+							isOpen={this.props.modalOpen}
+							toggle={this.props.handleClose}
+							centered
+							size="md"
+							className=""
+						>
+							<div className="order-modal-body row d-flex justify-content-center">
+								<ModalHeader className="modal-title row d-flex justify-content-center">
+									Thank you!
+								</ModalHeader>
+								<div className="row d-flex justify-content-center">
+									<ModalBody className="text-center col-10">
+										<h2>
+											We have received your order. We will
+											contact you soon to retrieve more
+											information about your special
+											occasion!
+										</h2>
+										<Button
+											className="cancel-button col-4 m-2"
+											onClick={this.props.handleClose}
+										>
+											Close
+										</Button>
+									</ModalBody>
+								</div>
 							</div>
-						</div>
-					</Modal>
+						</Modal>
+					</Fade>
 				) : (
 					<Modal
 						isOpen={this.props.modalOpen}
@@ -192,6 +266,7 @@ export default class PurchasePage extends React.Component {
 											<Input
 												type="text"
 												id="fName"
+												name="FirstName"
 												autoFocus
 												placeholder="First Name"
 												value={this.state.fName}
@@ -213,6 +288,7 @@ export default class PurchasePage extends React.Component {
 											<Input
 												type="text"
 												id="lName"
+												name="LastName"
 												placeholder="Last Name"
 												value={this.state.lName}
 												onChange={this.onlNameChange}
@@ -232,6 +308,8 @@ export default class PurchasePage extends React.Component {
 										<FormGroup>
 											<Input
 												type="email"
+												id="email"
+												name="EmailAddress"
 												placeholder="Email"
 												value={this.state.email}
 												onChange={this.onEmailChange}
@@ -253,6 +331,7 @@ export default class PurchasePage extends React.Component {
 												type="tel"
 												inputMode="tel"
 												id="tel"
+												name="TelephoneNumber"
 												placeholder="Phone"
 												value={this.state.tel}
 												onChange={this.onTelChange}
@@ -292,8 +371,8 @@ export default class PurchasePage extends React.Component {
 												<Label check>
 													<Input
 														type="radio"
-														name="radio2"
-														value="email"
+														name="Preference"
+														value="Prefers Email"
 														onChange={
 															this.onPrefChange
 														}
@@ -306,8 +385,8 @@ export default class PurchasePage extends React.Component {
 												<Label check>
 													<Input
 														type="radio"
-														name="radio2"
-														value="tel"
+														name="Preference"
+														value="Prefers Phone"
 														onChange={
 															this.onPrefChange
 														}
@@ -320,8 +399,8 @@ export default class PurchasePage extends React.Component {
 												<Label check>
 													<Input
 														type="radio"
-														name="radio2"
-														value="both"
+														name="Preference"
+														value="Email or Phone"
 														onChange={
 															this.onPrefChange
 														}
@@ -343,12 +422,18 @@ export default class PurchasePage extends React.Component {
 											<Dropdown
 												group
 												size="lg"
+												// name="Item"
+												value={DropdownItem.value}
 												isOpen={this.state.dropdown}
 												toggle={this.onDropdownToggle}
 												onChange={this.onItemChange}
 												className="dropdown-button"
 											>
-												<DropdownToggle className="order-button">
+												<DropdownToggle
+													className="order-button"
+													name="Item"
+													value={this.state.item}
+												>
 													{this.state.item
 														? this.state.item
 														: 'Choose an Item'}
@@ -387,6 +472,7 @@ export default class PurchasePage extends React.Component {
 												}
 												placeholderText="Choose a Date"
 												className="date-form-box text-center"
+												name="Date"
 												invalid={
 													this.state.error &&
 													!this.state.date
@@ -406,6 +492,7 @@ export default class PurchasePage extends React.Component {
 											<Input
 												type="textarea"
 												id="note"
+												name="Note"
 												placeholder="(Optional)"
 												value={this.state.review}
 												onChange={this.onNoteChange}
@@ -416,15 +503,20 @@ export default class PurchasePage extends React.Component {
 								</Row>
 								{this.state.error ? (
 									<div className="submission-error-text">
-										<p>
-											In order to complete your order, we
-											need the following information:
-										</p>
-										<ul>
-											{this.state.errorArr.map((e) => (
-												<li>{e}</li>
-											))}
-										</ul>
+										<Slide bottom cascade duration={750}>
+											<p>
+												In order to complete your order,
+												we need the following
+												information:
+											</p>
+											<ul>
+												{this.state.errorArr.map(
+													(e) => (
+														<li>{e}</li>
+													)
+												)}
+											</ul>
+										</Slide>
 									</div>
 								) : (
 									<p></p>

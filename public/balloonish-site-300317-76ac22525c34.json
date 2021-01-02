@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "balloonish-site-300317",
+  "private_key_id": "76ac22525c341c8d8c741586213a1ab1b56c5fc1",
+  "private_key": "REACT_APP_GOOGLE_PRIVATE_KEY",
+  "client_email": "REACT_APP_GOOGLE_SERVICE_ACCOUNT_EMAIL",
+  "client_id": "102041952307877769032",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/balloon-ish%40balloonish-site-300317.iam.gserviceaccount.com"
+}

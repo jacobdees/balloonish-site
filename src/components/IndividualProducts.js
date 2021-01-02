@@ -8,7 +8,7 @@ import {
 	CardSubtitle,
 	Button,
 } from 'reactstrap';
-import { Flip } from 'react-reveal';
+import { Fade } from 'react-reveal';
 import ProductPortal from './ProductPortal';
 import PurchasePage from '../components/PurchasePage';
 
@@ -24,17 +24,17 @@ const IndividualProducts = (props) => {
 					className="row d-flex justify-content-center align-items-end item-card-images"
 					style={{ backgroundImage: `url(${props.img})` }}
 				>
-					<Flip
-						top
-						delay={500}
-						duration={1500}
+					<Fade
+						bottom
+						delay={250}
+						duration={500}
 						cascade
 						className="row d-flex align-items-end border border-danger"
 					>
 						<CardTitle className="item-card-title col-12 text-center">
 							{props.title} ({props.type})
 						</CardTitle>
-					</Flip>
+					</Fade>
 				</CardBody>
 			</Card>
 		</div>

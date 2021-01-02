@@ -12,6 +12,7 @@ import {
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import emailjs from 'emailjs-com';
 import SimpleRating from './SimpleRating';
 import { Fade, Zoom } from 'react-reveal';
 
@@ -59,6 +60,30 @@ export default class ReviewForm extends React.Component {
 		e.preventDefault();
 		// send submitted info to back-end
 
+		const templateParams = {
+			FirstName: this.state.fName,
+			LastName: this.state.lName,
+			Rating: this.state.rating,
+			EmailAddress: this.state.email,
+			Review: this.state.review,
+		};
+
+		emailjs
+			.send(
+				'jacobd139',
+				'balloon.ish-review',
+				templateParams,
+				'user_vQr9F12F8HQtq9R60srwH'
+			)
+			.then(
+				(result) => {
+					console.log(result.text);
+				},
+				(error) => {
+					console.log(error.text);
+				}
+			);
+
 		if (!this.state.rating) {
 			this.setState(() => ({
 				error: true,
@@ -75,12 +100,13 @@ export default class ReviewForm extends React.Component {
 				{this.state.formSubmitted === false ? (
 					<div className="row d-flex justify-content-center align-items-center h-100 py-auto">
 						<h1 className="review-form-title col-md-4 text-center order-md-12 d-flex align-items-center justify-content-center">
-							<Zoom right>Leave a Review!</Zoom>
+							<Zoom duration={1250}>Leave a Review!</Zoom>
 						</h1>
 						<Form
 							onSubmit={this.onSubmit}
 							className="col-md-4 order-md-1 order-modal-body p-5"
 						>
+							{/* <Zoom duration={1250}> */}
 							<Row form className="d-flex justify-content-center">
 								<Col md={5} xs={8}>
 									<FormGroup className="">
@@ -148,8 +174,8 @@ export default class ReviewForm extends React.Component {
 											Rating
 										</Label>
 										{/* <SimpleRating
-											rating={this.state.rating}
-										/> */}
+												rating={this.state.rating}
+											/> */}
 										<div>
 											<Box
 												component="fieldset"
@@ -175,8 +201,8 @@ export default class ReviewForm extends React.Component {
 								<Col md={7} xs={8}>
 									<FormGroup>
 										{/* <Label htmlFor="review">
-											Comments:
-										</Label> */}
+												Comments:
+											</Label> */}
 										<Input
 											type="textarea"
 											id="review"
@@ -189,15 +215,15 @@ export default class ReviewForm extends React.Component {
 								</Col>
 							</Row>
 							{/* <FormGroup>
-								<Label htmlFor="customerPicture">Picture</Label>
-								<Input
-									type="file"
-									name="file"
-									id="customerPicture"
-									value={this.state.picture}
-									onChange={this.onPictureChange}
-								/>
-							</FormGroup> */}
+									<Label htmlFor="customerPicture">Picture</Label>
+									<Input
+										type="file"
+										name="file"
+										id="customerPicture"
+										value={this.state.picture}
+										onChange={this.onPictureChange}
+									/>
+								</FormGroup> */}
 							<div className="d-flex row justify-content-center">
 								{this.state.error && !this.state.rating ? (
 									<p className="submission-error-text text-center">
@@ -212,15 +238,18 @@ export default class ReviewForm extends React.Component {
 									Submit
 								</Button>
 							</div>
+							{/* </Zoom> */}
 						</Form>
 					</div>
 				) : (
 					<div className="container h-100">
 						<div className="row display-flex justify-content-center text-center align-items-center h-100 py-auto">
-							<h1 className="col-12">
-								Thank you for submitting your review of
-								balloon.ish!
-							</h1>
+							<Fade bottom>
+								<h1 className="col-12">
+									Thank you for submitting your review of
+									balloon.ish!
+								</h1>
+							</Fade>
 						</div>
 					</div>
 				)}

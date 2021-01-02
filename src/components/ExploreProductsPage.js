@@ -51,11 +51,11 @@ export default class ExploreProducts extends React.Component {
 		return (
 			<div className="container-fluid w-100 items-deck">
 				<div className="">
-					<Slide bottom duration={2000}>
+					<Fade top delay={250} duration={2000} fraction={0.75}>
 						<h2 className="col-12 text-center item-deck-title">
 							What will you celebrate today?
 						</h2>
-					</Slide>
+					</Fade>
 					<div className="container-fluid">
 						<div className="row d-flex justify-content-around">
 							{this.state.isDesktop ? (

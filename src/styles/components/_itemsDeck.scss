@@ -17,6 +17,8 @@
 
 .item-deck-title {
 	font-size: $xl-size;
+	padding-top: $xl-size;
+	z-index: -1;
 }
 
 .overlay {

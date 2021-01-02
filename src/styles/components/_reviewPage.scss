@@ -1,15 +1,24 @@
 .review-page {
-	background-color: $beige;
 	margin-top: none;
-	// padding: $xl-size;
 	height: 50vh;
+
+	// ORIGINAL BACKGROUND
+	// background-color: $beige;
+	// background-attachment: fixed;
+	// background: linear-gradient(
+	// 	180deg,
+	// 	rgba(220, 185, 156, 1) 0%,
+	// 	rgb(255, 255, 255) 99%
+	// );
+
+	// LIQUID GRADIENT BACKGROUND
+	background-image: url(/images/balloonish-liquid-gradient-background-1.png);
+	height: 50 vh;
 	background-attachment: fixed;
-	// scroll-snap-align: start;
-	background: linear-gradient(
-		180deg,
-		rgba(220, 185, 156, 1) 0%,
-		rgb(255, 255, 255) 99%
-	);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
 }
 
 .review-text {

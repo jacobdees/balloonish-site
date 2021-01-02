@@ -16,27 +16,34 @@
 }
 
 .about-page {
-	// height: 500px;
-	// background-size: contain;
-	// background-repeat: no-repeat;
-	// background-blend-mode: multiply;
-	background: $dark-blue;
-	color: $off-white;
-	// background: linear-gradient(90deg, $off-white 0%, $dark-blue 50%);
-	// height: 100vh;
-	width: 100vw;
-	background-position: top left;
-	// bottom, top,
-	// box-shadow: 0 0 8px 0px white inset;
-	// box-shadow: 5px 1px 5px 1px #555;
+	// ORIGINAL BACKGROUND
+	// background: $dark-blue;
+	// color: $off-white;
+	// width: 100vw;
+	// background-position: top left;
+
+	// LIQUID GRADIENT BACKGROUND
+	background-image: url(/images/balloonish-liquid-gradient-background-1.png);
+	height: 50 vh;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
 }
 
 .about-page-title {
 	text-align: center;
 	font-size: $xl-size;
+	color: $off-white;
 }
 
 .about-page-bio {
 	text-align: right;
-	font-size: $m-size;
+	font-size: 2.5rem;
+}
+
+.about-page-img {
+	height: auto;
+	width: 90%;
 }
