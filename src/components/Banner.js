@@ -27,7 +27,7 @@ export default class Banner extends React.Component {
 								}}
 								key={1}
 								src="/images/logo-removebg-preview.png"
-								className="banner-logo"
+								className="banner-logo align-self-between"
 							/>
 						)}
 					</Motion>
