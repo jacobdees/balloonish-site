@@ -10,7 +10,7 @@
 		"dev-server": "webpack-dev-server",
 		"start:dev": "webpack-dev-server",
 		"start": "node server/server.js",
-		"heroku-postbuild": "yarn run build:prod"
+		"heroku-postbuild": "npm build:prod"
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.12.5",
