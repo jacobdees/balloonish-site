@@ -14,7 +14,7 @@ export default class AboutPage extends React.Component {
 					</h2> */}
 					<Fade bottom duration={2000}>
 						<img
-							className="col-md-6"
+							className="col-md-6 kam-pic"
 							src="/images/kam-circle-no-beige.png"
 						></img>
 					</Fade>

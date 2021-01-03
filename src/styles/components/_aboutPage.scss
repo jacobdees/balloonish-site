@@ -5,14 +5,14 @@
 	background-repeat: no-repeat;
 	// background-blend-mode: multiply;
 	background-color: $off-white;
-	height: 100vh;
-	// width: 100vw;
+	height: auto;
+	width: 100%;
 	background-position: top left;
 	// bottom, top,
 	// box-shadow: 5px 1px 5px 1px #555;
-	-webkit-box-shadow: inset -80px 0px 100px rgba(216, 216, 216, 0);
-	-moz-box-shadow: inset -80px 0px 100px rgba(216, 216, 216, 0);
-	box-shadow: inset -80px 0px 100px rgba(216, 216, 216, 0);
+	// -webkit-box-shadow: inset -80px 0px 100px rgba(216, 216, 216, 0);
+	// -moz-box-shadow: inset -80px 0px 100px rgba(216, 216, 216, 0);
+	// box-shadow: inset -80px 0px 100px rgba(216, 216, 216, 0);
 }
 
 .about-page {
